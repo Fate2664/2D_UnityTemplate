@@ -1,0 +1,1746 @@
+fileFormatVersion: 2
+guid: cacbc046ed40dfb42be9b521334d7886
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5401743038181761946
+    second: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 0
+    wrapV: 0
+    wrapW: 0
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 4096
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_10
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 3692
+        width: 112
+        height: 223
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dce1361d151cd5049a22273a27a135a1
+      internalID: 754719951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_11
+      rect:
+        serializedVersion: 2
+        x: 123
+        y: 3691
+        width: 114
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c62fe19fb6931f0459bfc5dd435a91a3
+      internalID: 626980114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_12
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 3692
+        width: 116
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da82e3d6debf0ab418a586f1ee02dfa5
+      internalID: -1869633089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_13
+      rect:
+        serializedVersion: 2
+        x: 361
+        y: 3692
+        width: 114
+        height: 222
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8763b005849754418ccde4adb082863
+      internalID: 1771524771
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_14
+      rect:
+        serializedVersion: 2
+        x: 478
+        y: 3691
+        width: 113
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a1f8972ccd54ba47bb382f946e3917b
+      internalID: -1681982973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_15
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 3692
+        width: 111
+        height: 224
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5a50d2254123fa41b2273781d1c078e
+      internalID: -1111169979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_17
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 3450
+        width: 133
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf95d2b9ae3c2534d81166e033b8ef84
+      internalID: 1927740340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_18
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 3451
+        width: 129
+        height: 214
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dd79374c32cc0346b2ab44b35ae795e
+      internalID: -502229413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_19
+      rect:
+        serializedVersion: 2
+        x: 287
+        y: 3449
+        width: 132
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4140aa4b2cede09439f07647da9edceb
+      internalID: -1907113004
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_20
+      rect:
+        serializedVersion: 2
+        x: 428
+        y: 3450
+        width: 136
+        height: 217
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f0c4e7a460cb1841ab274eac7a4f739
+      internalID: -1673669720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_21
+      rect:
+        serializedVersion: 2
+        x: 568
+        y: 3450
+        width: 133
+        height: 219
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9938b1b027ed20d41adbd03524b265de
+      internalID: 763340704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_22
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 3450
+        width: 129
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab25d506a43ee1c45a5319a8901cdfc2
+      internalID: -1658894640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_23
+      rect:
+        serializedVersion: 2
+        x: 848
+        y: 3450
+        width: 132
+        height: 216
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48e35f32bcc6e184f8199897d1588663
+      internalID: -81634735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_24
+      rect:
+        serializedVersion: 2
+        x: 989
+        y: 3450
+        width: 136
+        height: 218
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 343cbc8c78980464d97d1f9b3f3b1a22
+      internalID: 1209625130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_26
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 3219
+        width: 105
+        height: 207
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40f1ef93fdd5c35498418806db8fc325
+      internalID: 2090020883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_27
+      rect:
+        serializedVersion: 2
+        x: 127
+        y: 3220
+        width: 95
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8962ef82604f7274693d488d408a7026
+      internalID: -785711500
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_29
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2980
+        width: 138
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41c3f5ed36867714ea936281f39fa0e6
+      internalID: 1166256814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_30
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 3003
+        width: 143
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cba8b66cce56a944a9b0e3acdd5955e
+      internalID: -611611206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_31
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 2980
+        width: 140
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a0041909c76b784eac9b14b1fe8ca3a
+      internalID: -1562269066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_34
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 2753
+        width: 102
+        height: 201
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f8aac652bceaea4e8413cbe8c031b2c
+      internalID: 806709108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_35
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 2750
+        width: 136
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb51638bdc44e2c45809343818a7cf86
+      internalID: -618407197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_37
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 2532
+        width: 153
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eecfe5c16f095534f87558d92a97b899
+      internalID: -893112319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_38
+      rect:
+        serializedVersion: 2
+        x: 198
+        y: 2530
+        width: 169
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19d7136cb45ad5c4d82b5f327ce2a588
+      internalID: 1564599728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_39
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 2531
+        width: 185
+        height: 192
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62517d3ec08371049b5bd6f118ef895b
+      internalID: 1817071846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_40
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 2530
+        width: 176
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1dfc0f5c13105fd41a5e7ea72e832d0e
+      internalID: 857999003
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_41
+      rect:
+        serializedVersion: 2
+        x: 793
+        y: 2533
+        width: 123
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1bbb6f34409757a4b9e495cc1fd8132e
+      internalID: 538658007
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_42
+      rect:
+        serializedVersion: 2
+        x: 981
+        y: 2533
+        width: 129
+        height: 197
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef0980a3145c1f444932d1bfcf0d33a1
+      internalID: 774358495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_43
+      rect:
+        serializedVersion: 2
+        x: 1172
+        y: 2532
+        width: 116
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1aa40fbbdf528c3499cd8c41b22bb9a5
+      internalID: 72689758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_46
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 2302
+        width: 121
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea2d4cbcfae01b147a07efe4f883a54c
+      internalID: 671656853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_47
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 2300
+        width: 209
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f018fd9c2481f47459bc81bd3ad3a486
+      internalID: 332533403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_48
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 2301
+        width: 237
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2d0a06e43d60944c8ff0b16fabca711
+      internalID: -1378533484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_49
+      rect:
+        serializedVersion: 2
+        x: 629
+        y: 2299
+        width: 197
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e484861a76f187408f25dbf1ac3fc08
+      internalID: 748270244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_52
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 2064
+        width: 258
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 71, y: 0, z: 42, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5ae2ade912cb4344b576efa7988d641
+      internalID: 829287980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_53
+      rect:
+        serializedVersion: 2
+        x: 397
+        y: 2061
+        width: 382
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16dc7fa75dff7c847a2b4a6a66c209e8
+      internalID: 484393493
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_54
+      rect:
+        serializedVersion: 2
+        x: 916
+        y: 2062
+        width: 253
+        height: 150
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a63062cbf8701349accc067a8b88dac
+      internalID: 1886129694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_55
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 2061
+        width: 251
+        height: 163
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9678a5e25d9d7c7438299928a1f19939
+      internalID: -959560131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_56
+      rect:
+        serializedVersion: 2
+        x: 1704
+        y: 2061
+        width: 250
+        height: 171
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6ec01e2ae98e614f9434b0850b05306
+      internalID: 945429134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_59
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 1817
+        width: 258
+        height: 193
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e0e808efaf9a3145acde2cba9d98cff
+      internalID: 1865365128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_60
+      rect:
+        serializedVersion: 2
+        x: 482
+        y: 1814
+        width: 382
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa08512e5b5e23f48a711a15198de15a
+      internalID: 2140270703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_61
+      rect:
+        serializedVersion: 2
+        x: 1053
+        y: 1815
+        width: 231
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d74584c6ad46ce41b2ac3b890ef654b
+      internalID: -2142697146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_62
+      rect:
+        serializedVersion: 2
+        x: 1507
+        y: 1814
+        width: 168
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 974c583dfa0feee46b91d2f5540f38cc
+      internalID: 491651041
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_63
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 1586
+        width: 315
+        height: 174
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30aadac764c3f104da7c931c40a5df34
+      internalID: -1026104764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_64
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 1585
+        width: 391
+        height: 195
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 584410b8435998f498e0d651584e7d78
+      internalID: 1830433309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_65
+      rect:
+        serializedVersion: 2
+        x: 1077
+        y: 1587
+        width: 236
+        height: 194
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a66021f716d9ee4ea374464bf8bf1be
+      internalID: 2024356706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_66
+      rect:
+        serializedVersion: 2
+        x: 1528
+        y: 1585
+        width: 259
+        height: 198
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd16f15afc9aaf4290ab617ce2212e9
+      internalID: 1164234244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_67
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 1357
+        width: 237
+        height: 215
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b57433125e679c4fa6cc4aefd2d74ce
+      internalID: 1042909206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_68
+      rect:
+        serializedVersion: 2
+        x: 513
+        y: 1361
+        width: 260
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d78cf62f407a3e6418e0a313b2e6cedf
+      internalID: -173482253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_69
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 1358
+        width: 389
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3a6a5320681c104282cbb886cd240ef
+      internalID: 1272411965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_70
+      rect:
+        serializedVersion: 2
+        x: 1501
+        y: 1359
+        width: 231
+        height: 154
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b3029bf68fa0dff429b5ce31f315e1ac
+      internalID: -1705059958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_71
+      rect:
+        serializedVersion: 2
+        x: 155
+        y: 1131
+        width: 205
+        height: 179
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2034aac494dac614288055147fba854e
+      internalID: -617684282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_72
+      rect:
+        serializedVersion: 2
+        x: 602
+        y: 1130
+        width: 168
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 11a708e782b3a0b4ba76bcebf14a9db5
+      internalID: 1754884365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_73
+      rect:
+        serializedVersion: 2
+        x: 1046
+        y: 1129
+        width: 250
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2649757de99ce3047bb45411baa004fd
+      internalID: 1502787692
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_76
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 904
+        width: 200
+        height: 175
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 556524c887ffb14478f0a0e0d602c577
+      internalID: -952293113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_77
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 905
+        width: 171
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4f1216e0f6ba8e449b7645099f38f07
+      internalID: 2011293835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_79
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 663
+        width: 168
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c25ce44198d8a8441ba430e66d227fa3
+      internalID: 1270816982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_80
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 673
+        width: 203
+        height: 208
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1383d67c8b9932b409fc013f7b919221
+      internalID: 1693373290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_81
+      rect:
+        serializedVersion: 2
+        x: 461
+        y: 672
+        width: 205
+        height: 210
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd192cbea0e92f479919df594bb4063
+      internalID: -1594241230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_82
+      rect:
+        serializedVersion: 2
+        x: 703
+        y: 667
+        width: 170
+        height: 211
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f754703c73e41234f8b32ed63c0ae799
+      internalID: 2037735292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_83
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 662
+        width: 158
+        height: 196
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96341e6c272576347b20dedaaaa5a3de
+      internalID: 1647208054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_85
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 451
+        width: 146
+        height: 188
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6d7a2272eb009149aea3510c81f622e
+      internalID: 648250380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_86
+      rect:
+        serializedVersion: 2
+        x: 150
+        y: 451
+        width: 146
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba9f4cfefca71a2428d31e4f7946da14
+      internalID: 215088365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_87
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 451
+        width: 137
+        height: 190
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c62b346bacb4224fab08359835b2180
+      internalID: -499883788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_90
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 263
+        width: 161
+        height: 168
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1e5fade24e148340a4ec420719c19c6
+      internalID: 849899844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_91
+      rect:
+        serializedVersion: 2
+        x: 168
+        y: 272
+        width: 152
+        height: 159
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 91d6c7b782d703b4dafba1a9e1e5a8ed
+      internalID: -661619766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_94
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 115
+        width: 177
+        height: 101
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba4b132f75db52b4d9382c95013b80ec
+      internalID: -147328943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_95
+      rect:
+        serializedVersion: 2
+        x: 215
+        y: 119
+        width: 143
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c53719aef7d61164eb67b5381467890f
+      internalID: -1995460812
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_96
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 115
+        width: 168
+        height: 87
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f41e97419de7b0740833d3fce5b3af7b
+      internalID: 490510772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_97
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 115
+        width: 173
+        height: 82
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83d19a1c7bc639f448e1d0c758361cb5
+      internalID: -1258821506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PC _ Computer - Hollow Knight - Enemies - Husk Sentry_99
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 56
+        width: 88
+        height: 31
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 680e63466f3ef5440b70d7fc483630ad
+      internalID: -866504244
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b959d5d3a81f5de43a743035b1dfb93d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_0: 5401743038181761946
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_1: -1771097433
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_10: 754719951
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_100: -66331494
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_101: 1854741417
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_102: 275530118
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_103: -1883008602
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_104: -11463843
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_105: 1506820773
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_11: 626980114
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_12: -1869633089
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_13: 1771524771
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_14: -1681982973
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_15: -1111169979
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_16: 783196927
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_17: 1927740340
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_18: -502229413
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_19: -1907113004
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_2: -311230988
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_20: -1673669720
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_21: 763340704
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_22: -1658894640
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_23: -81634735
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_24: 1209625130
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_25: -212833256
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_26: 2090020883
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_27: -785711500
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_28: 911917122
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_29: 1166256814
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_3: 724510317
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_30: -611611206
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_31: -1562269066
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_32: -1829759335
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_33: -1499566289
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_34: 806709108
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_35: -618407197
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_36: 1182163491
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_37: -893112319
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_38: 1564599728
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_39: 1817071846
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_4: 1523732257
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_40: 857999003
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_41: 538658007
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_42: 774358495
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_43: 72689758
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_44: 361473796
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_45: -1326984963
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_46: 671656853
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_47: 332533403
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_48: -1378533484
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_49: 748270244
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_5: -1954938617
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_50: -760084300
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_51: -484601382
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_52: 829287980
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_53: 484393493
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_54: 1886129694
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_55: -959560131
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_56: 945429134
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_57: -236853254
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_58: -225610321
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_59: 1865365128
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_6: -781897103
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_60: 2140270703
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_61: -2142697146
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_62: 491651041
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_63: -1026104764
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_64: 1830433309
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_65: 2024356706
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_66: 1164234244
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_67: 1042909206
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_68: -173482253
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_69: 1272411965
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_7: 811555114
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_70: -1705059958
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_71: -617684282
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_72: 1754884365
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_73: 1502787692
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_74: 909358172
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_75: -2096054762
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_76: -952293113
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_77: 2011293835
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_78: 580719669
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_79: 1270816982
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_8: 697406944
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_80: 1693373290
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_81: -1594241230
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_82: 2037735292
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_83: 1647208054
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_84: 895567575
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_85: 648250380
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_86: 215088365
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_87: -499883788
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_88: 1232039271
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_89: -1786995125
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_9: -618759779
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_90: 849899844
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_91: -661619766
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_92: -308157856
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_93: -1692110378
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_94: -147328943
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_95: -1995460812
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_96: 490510772
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_97: -1258821506
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_98: -140809958
+      PC _ Computer - Hollow Knight - Enemies - Husk Sentry_99: -866504244
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
