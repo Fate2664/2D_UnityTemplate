@@ -17,6 +17,7 @@ public class PlayerMovement : MonoBehaviour
     private bool isWalking = false;
     private bool isGrounded;
     private bool isJumping = false;
+    private float lastMoveX;
     
     private Rigidbody2D rb;
     
@@ -39,11 +40,14 @@ public class PlayerMovement : MonoBehaviour
     private void HandleMovement()
     {
         Vector2 inputVector = gameInput.GetMovementVector();
-
-        if (isGrounded)
+        
+        rb.linearVelocity = new Vector2 (inputVector.x * moveSpeed, rb.linearVelocity.y);
+        
+        isWalking = Mathf.Abs(inputVector.x) > 0.01f;
+        
+        if (isWalking)
         {
-            rb.linearVelocity = new Vector2 (inputVector.x * moveSpeed, rb.linearVelocity.y);
-            isWalking = inputVector != Vector2.zero;
+            lastMoveX = -inputVector.x;
         }
     }
 
@@ -55,5 +59,10 @@ public class PlayerMovement : MonoBehaviour
     public bool IsJumping()
     {
         return isJumping;
+    }
+
+    public float GetFacingDir()
+    {
+        return lastMoveX;
     }
 }

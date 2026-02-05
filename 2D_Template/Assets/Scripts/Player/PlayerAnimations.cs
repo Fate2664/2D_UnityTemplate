@@ -10,9 +10,11 @@ public class PlayerAnimations : MonoBehaviour
     [SerializeField] private PlayerCombat  playerCombat;
     
     private Animator animator;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake()
     {
+        spriteRenderer = GetComponent<SpriteRenderer>();
         animator =  GetComponent<Animator>();
         playerCombat.OnPrimaryAttack += PlayPrimaryAttack;
     }
@@ -21,6 +23,12 @@ public class PlayerAnimations : MonoBehaviour
     {
         animator.SetBool(IS_WALKING, playerMovement.IsWalking());
         animator.SetBool(IS_JUMPING, playerMovement.IsJumping());
+        
+        float dir = playerMovement.GetFacingDir();
+        if (dir != 0)
+        {
+            spriteRenderer.flipX = dir < 0;
+        }
       
     }
 
