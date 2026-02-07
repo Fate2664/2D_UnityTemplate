@@ -24,7 +24,6 @@ public class SettingsMenu : MonoBehaviour
         TabBar.AddGestureHandler<Gesture.OnHover, TabButtonVisuals>(TabButtonVisuals.HandleHover);
         TabBar.AddGestureHandler<Gesture.OnPress, TabButtonVisuals>(TabButtonVisuals.HandlePress);
         TabBar.AddGestureHandler<Gesture.OnUnhover, TabButtonVisuals>(TabButtonVisuals.HandleUnHover);
-        TabBar.AddGestureHandler<Gesture.OnRelease, TabButtonVisuals>(TabButtonVisuals.HandleRelease);
         TabBar.AddGestureHandler<Gesture.OnClick, TabButtonVisuals>(HandleTabClicked);
         
         TabBar.SetDataSource(SettingsCollection);
@@ -43,7 +42,6 @@ public class SettingsMenu : MonoBehaviour
         {
             return;
         }
-
         if (selectedIndex >= 0 && TabBar.TryGetItemView(selectedIndex, out ItemView currentItemView))
         {
             (currentItemView.Visuals as TabButtonVisuals).isSelected = false;
@@ -51,7 +49,6 @@ public class SettingsMenu : MonoBehaviour
         
         selectedIndex = index;
         visuals.isSelected = true;
-        
         currentSortedSettings = new List<Setting>(CurrentSettings);
         currentSortedSettings.Sort((a, b) => a.Order.CompareTo(b.Order));
         
@@ -70,7 +67,6 @@ public class SettingsMenu : MonoBehaviour
     private void BindTab(Data.OnBind<SettingsCollection> evt, TabButtonVisuals target, int index)
     {
         target.label.Text = evt.UserData.Category;
-        target.isSelected = false;
     }
 
     #endregion

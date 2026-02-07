@@ -7,7 +7,7 @@ public class SettingsCollection : ScriptableObject
 {
     public string Category = null;
     
-    [SerializeField]
+    [SerializeReference]
     [TypeSelector]
     public List<Setting> Settings = new List<Setting>();
 }
