@@ -19,6 +19,18 @@ public class SettingsMenu : MonoBehaviour
     {
         //SettingsManager.Instance.LoadAllSettings();    
         
+        //Visual
+        Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
+        Root.AddGestureHandler<Gesture.OnUnhover, StepperSettingVisuals>(StepperSettingVisuals.HandleUnHover);
+        Root.AddGestureHandler<Gesture.OnPress, StepperSettingVisuals>(StepperSettingVisuals.HandlePress);
+        
+        //State Changing
+        SettingsList.AddGestureHandler<Gesture.OnClick, StepperSettingVisuals>(HandleStepperClick);
+        
+        //Data Binding
+        SettingsList.AddDataBinder<MultiOptionSetting, StepperSettingVisuals>(BindStepperSetting);
+        
+        
         //Tabs
         TabBar.AddDataBinder<SettingsCollection, TabButtonVisuals>(BindTab);
         TabBar.AddGestureHandler<Gesture.OnHover, TabButtonVisuals>(TabButtonVisuals.HandleHover);
@@ -55,6 +67,10 @@ public class SettingsMenu : MonoBehaviour
         SettingsList.SetDataSource(currentSortedSettings);
     }
 
+    private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
+    {
+        
+    }
     private void HandleTabClicked(Gesture.OnClick evt, TabButtonVisuals target, int index)
     {
         SelectTab(target, index);
@@ -67,6 +83,10 @@ public class SettingsMenu : MonoBehaviour
     private void BindTab(Data.OnBind<SettingsCollection> evt, TabButtonVisuals target, int index)
     {
         target.label.Text = evt.UserData.Category;
+    }
+    
+    private void BindStepperSetting(Data.OnBind<MultiOptionSetting> evt, StepperSettingVisuals target, int index)
+    {
     }
 
     #endregion

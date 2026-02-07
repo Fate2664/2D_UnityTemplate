@@ -1,12 +1,16 @@
+using System.Numerics;
+using DG.Tweening;
 using Nova;
+using Unity.VisualScripting;
 using UnityEngine;
+using Vector3 = UnityEngine.Vector3;
 
 [System.Serializable]
 public class TabButtonVisuals : ItemVisuals
 {
     public TextBlock label = null;
     public UIBlock2D Background = null;
-    public float HoverScale = 1.1f;
+    public static float HoverScale = 1.1f;
 
     public bool isSelected
     {
@@ -25,14 +29,14 @@ public class TabButtonVisuals : ItemVisuals
 
     internal static void HandleHover(Gesture.OnHover evt, TabButtonVisuals target, int index)
     {
-        //USE DOTWEENS
-        target.label.transform.localScale = Vector3.one * target.HoverScale;
+        target.label.DOKill();
+        target.label.transform.DOScale(target.label.transform.localScale * HoverScale, 0.2f).SetEase(Ease.OutBack);
         //Play Audio SFX
     }
 
     internal static void HandleUnHover(Gesture.OnUnhover evt, TabButtonVisuals target, int index)
     {
-        //USE DOTWEENS
-        target.label.transform.localScale = Vector3.one;
+        target.label.DOKill();
+        target.label.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutQuad);
     }
 }
