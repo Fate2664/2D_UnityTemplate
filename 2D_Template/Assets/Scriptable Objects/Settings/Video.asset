@@ -14,17 +14,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SettingsCollection
   Category: Video
   Settings:
-  - rid: 5843491056734699596
+  - rid: 5843491078767116377
   references:
     version: 2
     RefIds:
-    - rid: 5843491056734699596
-      type: {class: ResolutionSetting, ns: , asm: Assembly-CSharp}
+    - rid: 5843491078767116377
+      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
       data:
-        Key: Resolution
-        Name: Resolution
+        Key: Graphics Preset
+        Name: Graphics Preset
         Order: 0
         Type: 1
-        Options: []
-        selectedIndex: 0
-        DefaultIndex: 0
+        Options:
+        - Low
+        - Medium
+        - High
+        - Epic
+        selectedIndex: 2
+        DefaultIndex: 3

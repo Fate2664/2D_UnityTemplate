@@ -69,7 +69,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
     {
-        
+        var data = (MultiOptionSetting)currentSortedSettings[index];
     }
     private void HandleTabClicked(Gesture.OnClick evt, TabButtonVisuals target, int index)
     {
@@ -87,6 +87,8 @@ public class SettingsMenu : MonoBehaviour
     
     private void BindStepperSetting(Data.OnBind<MultiOptionSetting> evt, StepperSettingVisuals target, int index)
     {
+        target.SettingLabel.Text = evt.UserData.Name;
+        target.Initialize(evt.UserData);
     }
 
     #endregion
