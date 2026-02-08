@@ -19,6 +19,7 @@ public class TabButtonVisuals : ItemVisuals
         {
             Background.BodyEnabled = value;
             label.Color = value ? Color.black : Color.white;
+            
         }
     }
 

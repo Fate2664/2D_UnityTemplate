@@ -15,6 +15,7 @@ MonoBehaviour:
   Category: Video
   Settings:
   - rid: 5843491078767116377
+  - rid: 5843491085240762558
   references:
     version: 2
     RefIds:
@@ -23,12 +24,25 @@ MonoBehaviour:
       data:
         Key: Graphics Preset
         Name: Graphics Preset
-        Order: 0
+        Order: 1
         Type: 1
         Options:
         - Low
         - Medium
         - High
         - Epic
-        selectedIndex: 2
+        selectedIndex: 3
         DefaultIndex: 3
+    - rid: 5843491085240762558
+      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+      data:
+        Key: Render Setting
+        Name: Render Setting
+        Order: 0
+        Type: 1
+        Options:
+        - Windowed
+        - Windowed Borderless
+        - Fullscreen
+        selectedIndex: 0
+        DefaultIndex: 2

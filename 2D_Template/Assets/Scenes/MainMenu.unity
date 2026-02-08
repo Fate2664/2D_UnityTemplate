@@ -2240,9 +2240,9 @@ MonoBehaviour:
     AspectRatio: {x: 0, y: 0, z: 0}
     AspectRatioAxis: 0
   autoLayout:
-    Axis: 1
+    Axis: 2
     Spacing:
-      Raw: 0.03
+      Raw: 0
       Type: 1
     SpacingMinMax:
       Min: 0
@@ -2250,7 +2250,7 @@ MonoBehaviour:
     AutoSpace: 0
     ReverseOrder: 0
     alignment: 0
-    Offset: 100
+    Offset: 0
     Cross:
       Axis: 0
       Spacing:

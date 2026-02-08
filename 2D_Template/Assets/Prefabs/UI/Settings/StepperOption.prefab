@@ -11,8 +11,6 @@ GameObject:
   - component: {fileID: 3842383159307541436}
   - component: {fileID: 7455053977383053398}
   - component: {fileID: 2715108163311258255}
-  - component: {fileID: 734434076220340206}
-  - component: {fileID: 7311141521707688041}
   m_Layer: 0
   m_Name: StepperOption
   m_TagString: Untagged
@@ -33,7 +31,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1257312428260365522}
   - {fileID: 4890909413893561743}
+  - {fileID: 2484613377842828261}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &7455053977383053398
@@ -85,11 +85,11 @@ MonoBehaviour:
         Type: 0
     Padding:
       Left:
-        Raw: 0
-        Type: 0
+        Raw: 0.02
+        Type: 1
       Right:
-        Raw: 0
-        Type: 0
+        Raw: 0.02
+        Type: 1
       Bottom:
         Raw: 0
         Type: 0
@@ -191,16 +191,16 @@ MonoBehaviour:
     AspectRatio: {x: 0, y: 0, z: 0}
     AspectRatioAxis: 0
   autoLayout:
-    Axis: 0
+    Axis: 1
     Spacing:
-      Raw: 0
+      Raw: 34.8573
       Type: 0
     SpacingMinMax:
-      Min: 0
+      Min: 1
       Max: Infinity
     AutoSpace: 0
     ReverseOrder: 0
-    alignment: -1
+    alignment: 0
     Offset: 0
     Cross:
       Axis: 0
@@ -226,78 +226,6 @@ MonoBehaviour:
     ShadowCastingMode: 2
     ReceiveShadows: 1
   PreviewSize: {x: 1, y: 1, z: 0}
---- !u!114 &734434076220340206
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29349226500950778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0a75001f00536d40ad613f41ed2bdc0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Nova::Nova.ItemView
-  visuals:
-    rid: 5843491063420158056
-  references:
-    version: 2
-    RefIds:
-    - rid: 5843491063420158056
-      type: {class: StepperOptionVisuals, ns: , asm: Assembly-CSharp}
-      data:
-        label: {fileID: 1124725701330330278}
-        LeftArrow: {fileID: 1295841020087321699}
-        RightArrow: {fileID: 4011412315000870228}
---- !u!114 &7311141521707688041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 29349226500950778}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bd0e5f112b0a05b43b4ba50233a47743, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Nova::Nova.Interactable
-  ObstructDrags: 0
-  DragThreshold: 1
-  LowAccuracyDragThreshold: 30
-  ClickBehavior: 0
-  navigable: 1
-  onSelect: 0
-  autoSelect: 0
-  Navigation:
-    Left:
-      Type: 0
-      Fallback: 0
-      Target: {fileID: 0}
-    Right:
-      Type: 0
-      Fallback: 0
-      Target: {fileID: 0}
-    Down:
-      Type: 0
-      Fallback: 0
-      Target: {fileID: 0}
-    Up:
-      Type: 0
-      Fallback: 0
-      Target: {fileID: 0}
-    Forward:
-      Type: 1
-      Fallback: 1
-      Target: {fileID: 0}
-    Back:
-      Type: 1
-      Fallback: 1
-      Target: {fileID: 0}
-  draggable:
-    X: 0
-    Y: 0
-    Z: 0
-  GestureSpace: 0
 --- !u!1 &6058202947205198672
 GameObject:
   m_ObjectHideFlags: 0
@@ -329,9 +257,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1257312428260365522}
-  - {fileID: 2484613377842828261}
+  m_Children: []
   m_Father: {fileID: 3842383159307541436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -699,11 +625,11 @@ Transform:
   m_GameObject: {fileID: 6767136349202442533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 148.10497, y: 0, z: 0}
+  m_LocalPosition: {x: 141.92728, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4890909413893561743}
+  m_Father: {fileID: 3842383159307541436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
 --- !u!114 &7993249529340065697
 MonoBehaviour:
@@ -744,8 +670,8 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: -0.25
-        Type: 1
+        Raw: 141.92728
+        Type: 0
       Y:
         Raw: 0
         Type: 0
@@ -849,7 +775,7 @@ MonoBehaviour:
         Min: -Infinity
         Max: Infinity
     Alignment:
-      X: 1
+      X: 0
       Y: 0
       Z: 0
     AutoSize:
@@ -1041,11 +967,11 @@ Transform:
   m_GameObject: {fileID: 7111312262354707697}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -148.10497, y: 0, z: 0}
+  m_LocalPosition: {x: -141.92728, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4890909413893561743}
+  m_Father: {fileID: 3842383159307541436}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!114 &1392580583472325022
 MonoBehaviour:
@@ -1086,8 +1012,8 @@ MonoBehaviour:
         Type: 0
     Position:
       X:
-        Raw: -0.25
-        Type: 1
+        Raw: -141.92728
+        Type: 0
       Y:
         Raw: 0
         Type: 0
@@ -1191,7 +1117,7 @@ MonoBehaviour:
         Min: -Infinity
         Max: Infinity
     Alignment:
-      X: -1
+      X: 0
       Y: 0
       Z: 0
     AutoSize:

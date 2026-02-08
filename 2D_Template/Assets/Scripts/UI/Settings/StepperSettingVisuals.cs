@@ -10,7 +10,9 @@ public class StepperSettingVisuals : ItemVisuals
     public TextBlock ValueLabel = null;
     public UIBlock2D LeftArrow = null;
     public UIBlock2D RightArrow = null;
-    public static float HoverScale = 1.1f;
+    public Texture2D WhiteArrow = null;
+    public Texture2D BlackArrow = null;
+    public static float HoverScale = 1.05f;
         
     public bool isSelected
     {
@@ -19,25 +21,30 @@ public class StepperSettingVisuals : ItemVisuals
         {
             Background.BodyEnabled = value;
             SettingLabel.Color = value ? Color.black : Color.white;
+            ValueLabel.Color = value ? Color.black : Color.white;
+            LeftArrow.SetImage(value ? BlackArrow : WhiteArrow);
+            RightArrow.SetImage(value ? BlackArrow : WhiteArrow);
         }
             
     }
 
     private MultiOptionSetting dataSource = null;
     
-    public static void HandleHover(Gesture.OnHover evt, StepperSettingVisuals target)
+    internal static void HandleHover(Gesture.OnHover evt, StepperSettingVisuals target)
     {
-        target.SettingLabel.DOKill();
-        target.SettingLabel.transform.DOScale(target.SettingLabel.transform.localScale * HoverScale, 0.2f).SetEase(Ease.OutBack);
+        target.Background.DOKill();
+        target.Background.transform.DOScale(target.SettingLabel.transform.localScale * HoverScale, 0.15f).SetEase(Ease.OutBack);
+        target.isSelected = true;
     }
 
-    public static void HandleUnHover(Gesture.OnUnhover evt, StepperSettingVisuals target)
+    internal static void HandleUnHover(Gesture.OnUnhover evt, StepperSettingVisuals target)
     {
-        target.SettingLabel.DOKill();
-        target.SettingLabel.transform.DOScale(Vector3.one, 0.2f).SetEase(Ease.OutQuad);
+        target.Background.DOKill();
+        target.Background.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+        target.isSelected = false;
     }
 
-    public static void HandlePress(Gesture.OnPress evt, StepperSettingVisuals target)
+    internal static void HandlePress(Gesture.OnPress evt, StepperSettingVisuals target)
     {
         //Play SFX
     }
@@ -52,6 +59,7 @@ public class StepperSettingVisuals : ItemVisuals
         //We don't care about the paramenter
         dataSource.OnIndexChanged += _ => UpdateValue();
         
+        
         LeftArrow.AddGestureHandler<Gesture.OnPress>(HandleLeftArrowPressed);
         RightArrow.AddGestureHandler<Gesture.OnPress>(HandleRightArrowPressed);
     }
@@ -63,11 +71,19 @@ public class StepperSettingVisuals : ItemVisuals
 
     private void HandleLeftArrowPressed(Gesture.OnPress evt)
     {
+        if (dataSource.SelectedIndex == 0)
+        {
+            dataSource.SelectedIndex = dataSource.Options.Length - 1;
+        }else 
         dataSource.SelectedIndex = Mathf.Max(0, dataSource.SelectedIndex - 1);
     }
 
     private void HandleRightArrowPressed(Gesture.OnPress evt)
     {
+        if (dataSource.SelectedIndex == dataSource.Options.Length - 1)
+        {
+            dataSource.SelectedIndex = 0;
+        }else
         dataSource.SelectedIndex = Mathf.Min(dataSource.Options.Length - 1, dataSource.SelectedIndex + 1);
     }
 }
