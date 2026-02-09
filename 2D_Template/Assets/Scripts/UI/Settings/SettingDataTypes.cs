@@ -140,6 +140,12 @@ public class ResolutionSetting : MultiOptionSetting
     }
 }
 
+[System.Serializable]
+public class StepperSetting : MultiOptionSetting
+{
+    
+}
+
 
 
 

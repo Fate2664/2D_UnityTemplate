@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SettingsCollection
   Category: Video
   Settings:
-  - rid: 5843491078767116377
-  - rid: 5843491085240762558
+  - rid: 8727705807933669445
+  - rid: 8727705807933669446
   references:
     version: 2
     RefIds:
-    - rid: 5843491078767116377
-      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+    - rid: 8727705807933669445
+      type: {class: StepperSetting, ns: , asm: Assembly-CSharp}
       data:
         Key: Graphics Preset
         Name: Graphics Preset
@@ -31,18 +31,18 @@ MonoBehaviour:
         - Medium
         - High
         - Epic
-        selectedIndex: 3
-        DefaultIndex: 3
-    - rid: 5843491085240762558
-      type: {class: MultiOptionSetting, ns: , asm: Assembly-CSharp}
+        selectedIndex: 2
+        DefaultIndex: 2
+    - rid: 8727705807933669446
+      type: {class: StepperSetting, ns: , asm: Assembly-CSharp}
       data:
-        Key: Render Setting
-        Name: Render Setting
+        Key: Render Mode
+        Name: Render Mode
         Order: 0
         Type: 1
         Options:
         - Windowed
         - Windowed Borderless
         - Fullscreen
-        selectedIndex: 0
+        selectedIndex: 1
         DefaultIndex: 2

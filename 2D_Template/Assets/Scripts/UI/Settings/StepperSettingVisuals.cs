@@ -13,7 +13,7 @@ public class StepperSettingVisuals : ItemVisuals
     public Texture2D WhiteArrow = null;
     public Texture2D BlackArrow = null;
     public static float HoverScale = 1.05f;
-        
+    
     public bool isSelected
     {
         get => Background.BodyEnabled;
@@ -29,6 +29,23 @@ public class StepperSettingVisuals : ItemVisuals
     }
 
     private MultiOptionSetting dataSource = null;
+
+    public void Initialize(MultiOptionSetting dataSource)
+    {
+        this.dataSource = dataSource;
+
+        UpdateValue();
+        
+        //When OnIndexChanged also call this code -> UpdateValue()
+        //We don't care about the paramenter
+        dataSource.OnIndexChanged += _ => UpdateValue();
+        
+        //State Changing
+        LeftArrow.AddGestureHandler<Gesture.OnClick>(HandleLeftArrowClicked);
+        RightArrow.AddGestureHandler<Gesture.OnClick>(HandleRightArrowClicked);
+    }
+
+    #region HandleData
     
     internal static void HandleHover(Gesture.OnHover evt, StepperSettingVisuals target)
     {
@@ -48,42 +65,29 @@ public class StepperSettingVisuals : ItemVisuals
     {
         //Play SFX
     }
-
-    public void Initialize(MultiOptionSetting dataSource)
-    {
-        this.dataSource = dataSource;
-
-        UpdateValue();
-        
-        //When OnIndexChanged also call this code -> UpdateValue()
-        //We don't care about the paramenter
-        dataSource.OnIndexChanged += _ => UpdateValue();
-        
-        
-        LeftArrow.AddGestureHandler<Gesture.OnPress>(HandleLeftArrowPressed);
-        RightArrow.AddGestureHandler<Gesture.OnPress>(HandleRightArrowPressed);
-    }
-
+    
     private void UpdateValue()
     {
         ValueLabel.Text = dataSource.Options[dataSource.SelectedIndex];
     }
 
-    private void HandleLeftArrowPressed(Gesture.OnPress evt)
+    private void HandleLeftArrowClicked(Gesture.OnClick evt)
     {
         if (dataSource.SelectedIndex == 0)
         {
             dataSource.SelectedIndex = dataSource.Options.Length - 1;
         }else 
-        dataSource.SelectedIndex = Mathf.Max(0, dataSource.SelectedIndex - 1);
+            dataSource.SelectedIndex = Mathf.Max(0, dataSource.SelectedIndex - 1);
     }
 
-    private void HandleRightArrowPressed(Gesture.OnPress evt)
+    private void HandleRightArrowClicked(Gesture.OnClick evt)
     {
         if (dataSource.SelectedIndex == dataSource.Options.Length - 1)
         {
             dataSource.SelectedIndex = 0;
         }else
-        dataSource.SelectedIndex = Mathf.Min(dataSource.Options.Length - 1, dataSource.SelectedIndex + 1);
+            dataSource.SelectedIndex = Mathf.Min(dataSource.Options.Length - 1, dataSource.SelectedIndex + 1);
     }
+
+    #endregion
 }
