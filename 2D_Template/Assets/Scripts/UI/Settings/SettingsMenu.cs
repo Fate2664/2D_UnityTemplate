@@ -4,9 +4,11 @@ using Nova;
 using NovaSamples.UIControls;
 using System.Collections.Generic;
 
+[System.Serializable]
 public class SettingsMenu : MonoBehaviour
 {
     public UIBlock Root = null;
+    public GameInput gameInput = null;
     public List<SettingsCollection> SettingsCollection = null;
     public ListView TabBar = null;
     public ListView SettingsList = null;
@@ -14,6 +16,11 @@ public class SettingsMenu : MonoBehaviour
     private int selectedIndex = -1;
     private List<Setting> CurrentSettings => SettingsCollection[selectedIndex].Settings;
     private List<Setting> currentSortedSettings;
+    private int currentIndex = 0;
+    private float inputCooldown = 0.15f;
+    private float inputTimer;
+    private float verticalNav;
+    private float horizontalNav;
     
     private void Start()
     {
@@ -46,6 +53,53 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
+    private void Update()
+    {
+        HandleKeyboardNavigation();
+    }
+
+    private void HandleKeyboardNavigation()
+    {
+        float nav = gameInput.GetVerticalNav();
+        Debug.Log(nav.ToString());
+        if (Time.unscaledTime < inputTimer) return;
+
+        if (nav > 0.5f)
+        {
+            MoveSelection(-1);
+        }
+        else if (nav < -0.5f)
+        {
+            MoveSelection(1);
+        }
+    }
+
+    private void MoveSelection(int direction)
+    {
+        int newIndex = Mathf.Clamp(currentIndex + direction, 0, SettingsCollection.Count - 1);
+
+        if (newIndex == currentIndex) return;
+        
+        currentIndex = newIndex;
+
+        HighlightCurrentSetting();
+        SettingsList.JumpToIndex(currentIndex);
+        
+        inputTimer = Time.unscaledTime + inputCooldown;
+    }
+
+    private void HighlightCurrentSetting()
+    {
+        for (int i = 0; i < SettingsCollection.Count; i++)
+        {
+            if (SettingsList.TryGetItemView(i, out ItemView itemView))
+            {
+                StepperSettingVisuals visuals = itemView.Visuals as StepperSettingVisuals;
+                visuals.isSelected = (i == currentIndex);
+            }
+        }
+    }
+
     #region HandleData
 
     private void SelectTab(TabButtonVisuals visuals, int index)
@@ -65,6 +119,8 @@ public class SettingsMenu : MonoBehaviour
         currentSortedSettings.Sort((a, b) => a.Order.CompareTo(b.Order));
         
         SettingsList.SetDataSource(currentSortedSettings);
+        currentIndex = 0;
+        HighlightCurrentSetting();
     }
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)

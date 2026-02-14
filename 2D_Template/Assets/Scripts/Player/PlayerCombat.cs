@@ -17,8 +17,6 @@ public class PlayerCombat : MonoBehaviour
       gameInput.OnPrimaryAttack += GameInput_OnPrimaryAttack;
    }
 
-  
-
    private void GameInput_OnPrimaryAttack(object sender, EventArgs e)
    {
       OnPrimaryAttack?.Invoke(this, EventArgs.Empty);
