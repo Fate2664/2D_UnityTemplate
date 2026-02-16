@@ -1,75 +1,78 @@
 using System;
 using UnityEditor.Build.Player;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
-public class GameInput : MonoBehaviour
+[CreateAssetMenu(menuName = "Input/Game Input")]
+public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, PlayerInputActions.IUIActions 
 {
     //Player Actions
-    public event EventHandler OnInteract;
-    public event EventHandler OnPrimaryAttack;
+    public event UnityAction<Vector2> Move =  delegate { };
+    public event UnityAction<bool> PrimaryAttack  =  delegate { };
+    public event UnityAction<bool> Interact  =  delegate { };
     
     //UI Actions
-    public event EventHandler OnApply;
-    public event EventHandler OnRestoreDefaults;
-    public event EventHandler OnExit;
+    public event UnityAction<bool> Exit  =  delegate { };
+    public event UnityAction<bool> RestoreDefaults  =  delegate { };
+    public event UnityAction<bool> Apply  =  delegate { };
+    public event UnityAction<float> VerticalNav  =  delegate { };
+    public event UnityAction<float> HorizontalNav  =  delegate { };
+    
         
-    private Vector2 _moveInput;
-    private PlayerInputActions _playerInput;
-    private float _verticalNav;
+    private PlayerInputActions inputActions;
     
     
-    private void Awake()
+    public Vector2 Direction => inputActions.Player.Move.ReadValue<Vector2>();
+    public bool IsPrimaryAttackPressed => inputActions.Player.PrimaryAttack.IsPressed();
+    public bool IsInteractPressed => inputActions.Player.Interact.IsPressed();
+    
+    
+    public void EnableActions()
     {
-        _playerInput = new PlayerInputActions();
-        _playerInput.Player.Enable();
-        
-        //Player Actions
-        _playerInput.Player.Move.performed += ctx => _moveInput = ctx.ReadValue<Vector2>();
-        _playerInput.Player.Move.canceled += ctx => _moveInput = Vector2.zero;
-        _playerInput.Player.PrimaryAttack.performed += PrimaryAttack_performed;
-        _playerInput.Player.Interact.performed += Interact_performed;
-        
-        //UI Actions
-        _playerInput.UI.Apply.performed += Apply_performed;
-        _playerInput.UI.Exit.performed += Exit_performed;
-        _playerInput.UI.RestoreDefaults.performed += RestoreDefaults_performed;
-        _playerInput.UI.VerticalNavigation.performed += ctx => _verticalNav = ctx.ReadValue<float>();
-        _playerInput.UI.VerticalNavigation.canceled += ctx => _verticalNav = 0;
+        if (inputActions == null)
+        {
+            inputActions = new PlayerInputActions();
+            inputActions.Player.SetCallbacks(this);
+        }    
+            inputActions.Player.Enable();
+    }
+    
+    public void OnMove(InputAction.CallbackContext context)
+    {
+        Move.Invoke(context.ReadValue<Vector2>());
     }
 
-    private void RestoreDefaults_performed(InputAction.CallbackContext obj)
+    void PlayerInputActions.IPlayerActions.OnInteract(InputAction.CallbackContext context)
     {
-        OnRestoreDefaults.Invoke(this, EventArgs.Empty);
+        Interact.Invoke(context.phase == InputActionPhase.Performed);
     }
 
-    private void Exit_performed(InputAction.CallbackContext obj)
+    void PlayerInputActions.IPlayerActions.OnPrimaryAttack(InputAction.CallbackContext context)
     {
-        OnExit.Invoke(this, EventArgs.Empty);
+        PrimaryAttack.Invoke(context.phase == InputActionPhase.Performed);
     }
 
-    private void Apply_performed(InputAction.CallbackContext obj)
+    void PlayerInputActions.IUIActions.OnExit(InputAction.CallbackContext context)
     {
-        OnApply.Invoke(this, EventArgs.Empty);
+        Exit.Invoke(context.phase == InputActionPhase.Performed);
     }
 
-    private void PrimaryAttack_performed(InputAction.CallbackContext context)
+    public void OnVerticalNavigation(InputAction.CallbackContext context)
     {
-        OnPrimaryAttack?.Invoke(this, EventArgs.Empty);
     }
 
-    private void Interact_performed(InputAction.CallbackContext obj)
+    public void OnHorizontalNavigation(InputAction.CallbackContext context)
     {
-        OnInteract?.Invoke(this, EventArgs.Empty);
     }
 
-	public Vector2 GetMovementVector()
-	{
-		return _moveInput.normalized; 
-	}
-
-    public float GetVerticalNav()
+    void PlayerInputActions.IUIActions.OnRestoreDefaults(InputAction.CallbackContext context)
     {
-        return _verticalNav;
+        RestoreDefaults.Invoke(context.phase == InputActionPhase.Performed);
+    }
+
+    void PlayerInputActions.IUIActions.OnApply(InputAction.CallbackContext context)
+    {
+        Apply.Invoke(context.phase == InputActionPhase.Performed);
     }
 }

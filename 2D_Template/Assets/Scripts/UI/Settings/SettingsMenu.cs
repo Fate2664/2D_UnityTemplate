@@ -21,6 +21,8 @@ public class SettingsMenu : MonoBehaviour
     private float inputTimer;
     private float verticalNav;
     private float horizontalNav;
+    private float OnVerticalNav(float dir) => verticalNav = dir;
+    private float OnHorizontalNav(float dir) => horizontalNav = dir;
     
     private void Start()
     {
@@ -61,7 +63,6 @@ public class SettingsMenu : MonoBehaviour
     private void HandleKeyboardNavigation()
     {
         float nav = gameInput.GetVerticalNav();
-        Debug.Log(nav.ToString());
         if (Time.unscaledTime < inputTimer) return;
 
         if (nav > 0.5f)

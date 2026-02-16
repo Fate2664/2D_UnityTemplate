@@ -16,26 +16,43 @@ public class PlayerMovement : MonoBehaviour
     
     private bool isWalking = false;
     private bool isGrounded;
-    private bool isJumping = false;
+    private bool isJumping => !isGrounded;
     private float lastMoveX;
     
     private Rigidbody2D rb;
-    
+    private Vector2 moveInput;
+    private void OnMove(Vector2 dir) => moveInput = dir;
+    private void OnAttack(bool pressed) {}
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();      
     }
 
+    private void Start()
+    {
+        gameInput.Move += OnMove;
+        gameInput.PrimaryAttack += OnAttack;
+        
+        gameInput.EnableActions();
+    }
+
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
-        isJumping = !isGrounded;
         HandleMovement();
+    }
+
+    private void OnDestroy()
+    {
+        gameInput.Move -= OnMove;
+        gameInput.PrimaryAttack -= OnAttack;
     }
 
     private void HandleMovement()
     {
-        Vector2 inputVector = gameInput.GetMovementVector();
+        Vector2 inputVector = moveInput;
         
         rb.linearVelocity = new Vector2 (inputVector.x * moveSpeed, rb.linearVelocity.y);
         
@@ -47,18 +64,8 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    public bool IsWalking()
-    {
-        return isWalking;
-    }
-
-    public bool IsJumping()
-    {
-        return isJumping;
-    }
-
-    public float GetFacingDir()
-    {
-        return lastMoveX;
-    }
+    public bool IsWalking() => isWalking;
+    public bool IsJumping() => isJumping;
+    public float GetFacingDir() => lastMoveX;
+    
 }
