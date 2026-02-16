@@ -15,8 +15,14 @@ public class PlayerAnimations : MonoBehaviour
     private void Awake()
     {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        animator =  GetComponent<Animator>();
-        playerCombat.OnPrimaryAttack += PlayPrimaryAttack;
+        animator = GetComponent<Animator>();
+        playerCombat.OnAttack += PlayPrimaryAttack;
+    }
+
+    private void OnDestroy()
+    {
+        if (playerCombat != null)
+            playerCombat.OnAttack -= PlayPrimaryAttack;
     }
 
     private void Update()
@@ -32,8 +38,9 @@ public class PlayerAnimations : MonoBehaviour
       
     }
 
-    private void PlayPrimaryAttack(object sender, EventArgs e)
+    private void PlayPrimaryAttack(bool pressed)
     {
-        animator.SetTrigger(ATTACK1);
+        if (pressed)
+            animator.SetTrigger(ATTACK1);
     }
 }

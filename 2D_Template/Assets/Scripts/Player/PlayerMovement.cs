@@ -22,18 +22,13 @@ public class PlayerMovement : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 moveInput;
     private void OnMove(Vector2 dir) => moveInput = dir;
-    private void OnAttack(bool pressed) {}
 
-
-    private void Awake()
-    {
-        rb = GetComponent<Rigidbody2D>();      
-    }
 
     private void Start()
     {
+        rb = GetComponent<Rigidbody2D>();      
+
         gameInput.Move += OnMove;
-        gameInput.PrimaryAttack += OnAttack;
         
         gameInput.EnableActions();
     }
@@ -44,11 +39,6 @@ public class PlayerMovement : MonoBehaviour
         HandleMovement();
     }
 
-    private void OnDestroy()
-    {
-        gameInput.Move -= OnMove;
-        gameInput.PrimaryAttack -= OnAttack;
-    }
 
     private void HandleMovement()
     {
@@ -68,4 +58,8 @@ public class PlayerMovement : MonoBehaviour
     public bool IsJumping() => isJumping;
     public float GetFacingDir() => lastMoveX;
     
+    private void OnDestroy()
+    {
+        gameInput.Move -= OnMove;
+    }
 }

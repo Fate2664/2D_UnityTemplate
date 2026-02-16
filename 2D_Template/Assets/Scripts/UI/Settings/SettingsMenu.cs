@@ -3,6 +3,7 @@ using UnityEngine;
 using Nova;
 using NovaSamples.UIControls;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 
 [System.Serializable]
 public class SettingsMenu : MonoBehaviour
@@ -12,7 +13,7 @@ public class SettingsMenu : MonoBehaviour
     public List<SettingsCollection> SettingsCollection = null;
     public ListView TabBar = null;
     public ListView SettingsList = null;
-    
+
     private int selectedIndex = -1;
     private List<Setting> CurrentSettings => SettingsCollection[selectedIndex].Settings;
     private List<Setting> currentSortedSettings;
@@ -21,38 +22,42 @@ public class SettingsMenu : MonoBehaviour
     private float inputTimer;
     private float verticalNav;
     private float horizontalNav;
-    private float OnVerticalNav(float dir) => verticalNav = dir;
-    private float OnHorizontalNav(float dir) => horizontalNav = dir;
-    
+    private void OnVerticalNav(float dir) => verticalNav = dir;
+    private void OnHorizontalNav(float dir) => horizontalNav = dir;
+
     private void Start()
     {
         //SettingsManager.Instance.LoadAllSettings();    
-        
+
         //Visual
         Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
         Root.AddGestureHandler<Gesture.OnUnhover, StepperSettingVisuals>(StepperSettingVisuals.HandleUnHover);
         Root.AddGestureHandler<Gesture.OnPress, StepperSettingVisuals>(StepperSettingVisuals.HandlePress);
-        
+
         //State Changing
         SettingsList.AddGestureHandler<Gesture.OnClick, StepperSettingVisuals>(HandleStepperClick);
-        
+
         //Data Binding
         SettingsList.AddDataBinder<MultiOptionSetting, StepperSettingVisuals>(BindStepperSetting);
-        
-        
+
+
         //Tabs
         TabBar.AddDataBinder<SettingsCollection, TabButtonVisuals>(BindTab);
         TabBar.AddGestureHandler<Gesture.OnHover, TabButtonVisuals>(TabButtonVisuals.HandleHover);
         TabBar.AddGestureHandler<Gesture.OnPress, TabButtonVisuals>(TabButtonVisuals.HandlePress);
         TabBar.AddGestureHandler<Gesture.OnUnhover, TabButtonVisuals>(TabButtonVisuals.HandleUnHover);
         TabBar.AddGestureHandler<Gesture.OnClick, TabButtonVisuals>(HandleTabClicked);
-        
+
         TabBar.SetDataSource(SettingsCollection);
 
         if (TabBar.TryGetItemView(0, out ItemView firstTab))
         {
             SelectTab(firstTab.Visuals as TabButtonVisuals, 0);
         }
+
+
+        gameInput.VerticalNav += OnVerticalNav;
+
     }
 
     private void Update()
@@ -62,7 +67,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void HandleKeyboardNavigation()
     {
-        float nav = gameInput.GetVerticalNav();
+        float nav = verticalNav;
         if (Time.unscaledTime < inputTimer) return;
 
         if (nav > 0.5f)
@@ -80,12 +85,12 @@ public class SettingsMenu : MonoBehaviour
         int newIndex = Mathf.Clamp(currentIndex + direction, 0, SettingsCollection.Count - 1);
 
         if (newIndex == currentIndex) return;
-        
+
         currentIndex = newIndex;
 
         HighlightCurrentSetting();
         SettingsList.JumpToIndex(currentIndex);
-        
+
         inputTimer = Time.unscaledTime + inputCooldown;
     }
 
@@ -113,12 +118,12 @@ public class SettingsMenu : MonoBehaviour
         {
             (currentItemView.Visuals as TabButtonVisuals).isSelected = false;
         }
-        
+
         selectedIndex = index;
         visuals.isSelected = true;
         currentSortedSettings = new List<Setting>(CurrentSettings);
         currentSortedSettings.Sort((a, b) => a.Order.CompareTo(b.Order));
-        
+
         SettingsList.SetDataSource(currentSortedSettings);
         currentIndex = 0;
         HighlightCurrentSetting();
@@ -137,11 +142,13 @@ public class SettingsMenu : MonoBehaviour
 
     #region BindData
 
+
+
     private void BindTab(Data.OnBind<SettingsCollection> evt, TabButtonVisuals target, int index)
     {
         target.label.Text = evt.UserData.Category;
     }
-    
+
     private void BindStepperSetting(Data.OnBind<MultiOptionSetting> evt, StepperSettingVisuals target, int index)
     {
         target.SettingLabel.Text = evt.UserData.Name;
@@ -149,4 +156,10 @@ public class SettingsMenu : MonoBehaviour
     }
 
     #endregion
+
+    private void OnDisable()
+    {
+        gameInput.VerticalNav -= OnVerticalNav;
+    }
 }
+

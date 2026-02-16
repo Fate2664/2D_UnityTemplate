@@ -1943,8 +1943,8 @@ MonoBehaviour:
     - rid: 5843491216912547912
       type: {class: PopupButtonVisuals, ns: , asm: Assembly-CSharp}
       data:
-        Background: {fileID: 262312906}
-        ButtonLabel: {fileID: 1095530964}
+        Background: {fileID: 0}
+        ButtonLabel: {fileID: 0}
 --- !u!114 &262312906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2958,7 +2958,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 592302190}
-  - component: {fileID: 592302189}
   m_Layer: 0
   m_Name: InputManager
   m_TagString: Untagged
@@ -2966,18 +2965,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &592302189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 592302188}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cc797a7480301a34684ef6ea1c10a630, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::GameInput
 --- !u!4 &592302190
 Transform:
   m_ObjectHideFlags: 0
@@ -3694,7 +3681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsMenu
   Root: {fileID: 920944568}
-  gameInput: {fileID: 592302189}
+  gameInput: {fileID: 0}
   SettingsCollection:
   - {fileID: 11400000, guid: 37d9b66aec623ed4b9c1f4bdb3b3fe76, type: 2}
   - {fileID: 11400000, guid: e10487e66b5b0c64dbc0653ba2df8e8f, type: 2}

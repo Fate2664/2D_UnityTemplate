@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerCombat : MonoBehaviour
 {
@@ -9,18 +10,24 @@ public class PlayerCombat : MonoBehaviour
    [Header("Connections")]
    [SerializeField] private GameInput gameInput;
 
-   public event EventHandler OnPrimaryAttack;
+   public event UnityAction<bool> OnAttack;
 
-   
    private void Awake()
    {
-      gameInput.OnPrimaryAttack += GameInput_OnPrimaryAttack;
+       gameInput.PrimaryAttack += HandlePrimaryAttack;
+       gameInput.EnableActions();
    }
 
-   private void GameInput_OnPrimaryAttack(object sender, EventArgs e)
+   private void OnDestroy()
    {
-      OnPrimaryAttack?.Invoke(this, EventArgs.Empty);
+       gameInput.PrimaryAttack -= HandlePrimaryAttack;
    }
+
+   private void HandlePrimaryAttack(bool pressed)
+   {
+       OnAttack?.Invoke(pressed);
+   }
+   
 
    
 }
