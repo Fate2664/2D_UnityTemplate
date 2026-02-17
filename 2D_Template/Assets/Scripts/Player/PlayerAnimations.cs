@@ -19,12 +19,6 @@ public class PlayerAnimations : MonoBehaviour
         playerCombat.OnAttack += PlayPrimaryAttack;
     }
 
-    private void OnDestroy()
-    {
-        if (playerCombat != null)
-            playerCombat.OnAttack -= PlayPrimaryAttack;
-    }
-
     private void Update()
     {
         animator.SetBool(IS_WALKING, playerMovement.IsWalking());
@@ -36,6 +30,12 @@ public class PlayerAnimations : MonoBehaviour
             spriteRenderer.flipX = dir < 0;
         }
       
+    }
+
+    private void OnDestroy()
+    {
+        if (playerCombat != null)
+            playerCombat.OnAttack -= PlayPrimaryAttack;
     }
 
     private void PlayPrimaryAttack(bool pressed)

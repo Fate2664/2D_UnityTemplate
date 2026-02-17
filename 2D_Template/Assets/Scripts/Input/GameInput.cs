@@ -35,7 +35,8 @@ public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, Pl
             inputActions = new PlayerInputActions();
             inputActions.Player.SetCallbacks(this);
         }    
-            inputActions.Player.Enable();
+        
+        inputActions.Player.Enable();
     }
     
     public void OnMove(InputAction.CallbackContext context)

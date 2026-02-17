@@ -17,7 +17,7 @@ public class SettingsMenu : MonoBehaviour
     private int selectedIndex = -1;
     private List<Setting> CurrentSettings => SettingsCollection[selectedIndex].Settings;
     private List<Setting> currentSortedSettings;
-    private int currentIndex = 0;
+    private int currentIndex;
     private float inputCooldown = 0.15f;
     private float inputTimer;
     private float verticalNav;

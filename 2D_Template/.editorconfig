@@ -1,0 +1,49 @@
+root = true
+
+[*.cs]
+# Private member 'X' can be removed as the value assigned to it is never read (IDE0052)
+dotnet_diagnostic.IDE0052.severity = hint
+
+# Private member 'X' is never used (IDE0051) - similar category, also made less strict
+dotnet_diagnostic.IDE0051.severity = hint
+
+# Naming rule violation (IDE1006) - e.g. private field 'inputTimer' naming style
+dotnet_diagnostic.IDE1006.severity = hint
+
+# ReSharper inspections affecting SettingsMenu.cs
+# Inconsistent / naming-style violations
+resharper_inconsistent_naming_highlighting = hint
+
+# Namespace does not correspond to file location
+resharper_check_namespace_highlighting = hint
+
+# Redundant 'using' directives
+resharper_redundant_using_directive_highlighting = hint
+
+# Qualifier is redundant (Redundant name qualifier)
+resharper_redundant_name_qualifier_highlighting = hint
+
+# Unused local variable
+resharper_unused_variable_highlighting = hint
+
+# Assignment is not used (fields/locals assigned but never read)
+resharper_redundant_assignment_highlighting = hint
+
+# Unused private field (field is assigned but its value is never used)
+resharper_not_accessed_field_local_highlighting = hint
+
+# ReSharper inspections affecting PlayerAnimations.cs
+# Unassigned private field (e.g., SerializeField fields assigned by Unity Inspector)
+# Note: These warnings may require ReSharper Unity plugin for proper suppression
+# Try multiple variations to match ReSharper's inspection ID format
+resharper_unassigned_field_local_highlighting = hint
+resharper_unassigned_field_highlighting = hint
+resharper_unassigned_field_global_highlighting = hint
+resharper_field_never_assigned_highlighting = hint
+
+# Unused private method (e.g., Unity lifecycle methods like Awake, Update, OnDestroy)
+resharper_unused_member_local_highlighting = hint
+resharper_unused_member_highlighting = hint
+
+resharper_possible_null_reference_exception_highlighting = hint 
+

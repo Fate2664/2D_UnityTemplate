@@ -3681,7 +3681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SettingsMenu
   Root: {fileID: 920944568}
-  gameInput: {fileID: 0}
+  gameInput: {fileID: 11400000, guid: b2590a553b58f07438df7b76baea99eb, type: 2}
   SettingsCollection:
   - {fileID: 11400000, guid: 37d9b66aec623ed4b9c1f4bdb3b3fe76, type: 2}
   - {fileID: 11400000, guid: e10487e66b5b0c64dbc0653ba2df8e8f, type: 2}
