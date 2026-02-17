@@ -88,7 +88,7 @@ public class MultiOptionSetting : Setting
     private const string NothingSelected = "None";
     public SettingType Type;
     public string[] Options = new string[0];
-    public int selectedIndex = 0;
+    public int selectedIndex;
     public int DefaultIndex = 0;
     public event Action<Setting> OnIndexChanged;
 
@@ -126,7 +126,7 @@ public class ResolutionSetting : MultiOptionSetting
         for (int i = Resolutions.Length - 1; i >= 0; i--)
         {
             Resolution r =  Resolutions[i];
-            Options[j] = $"{r.width} x {r.height} @ {r.refreshRate}Hz";
+            Options[j] = $"{r.width} x {r.height} @ {r.refreshRateRatio}Hz";
             j++;
         }
     }

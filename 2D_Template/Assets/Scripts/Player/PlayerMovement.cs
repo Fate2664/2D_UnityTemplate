@@ -14,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Connections")]
     [SerializeField] private GameInput gameInput;
     
-    private bool isWalking = false;
+    private bool isWalking;
     private bool isGrounded;
     private bool isJumping => !isGrounded;
     private float lastMoveX;

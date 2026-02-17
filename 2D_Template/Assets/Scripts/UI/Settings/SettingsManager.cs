@@ -157,9 +157,9 @@ public class SettingsManager : MonoBehaviour
             {
                 switch (setting)
                 {
-                    case BoolSetting boolSetting: boolSetting?.Save(); break;
-                    case FloatSetting floatSetting: floatSetting?.Save(); break;
-                    case MultiOptionSetting multiOptionSetting: multiOptionSetting?.Save(); break;
+                    case BoolSetting boolSetting: boolSetting.Save(); break;
+                    case FloatSetting floatSetting: floatSetting.Save(); break;
+                    case MultiOptionSetting multiOptionSetting: multiOptionSetting.Save(); break;
                 }
             }
         }

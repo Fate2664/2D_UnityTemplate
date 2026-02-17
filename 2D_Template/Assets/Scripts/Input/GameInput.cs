@@ -34,9 +34,11 @@ public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, Pl
         {
             inputActions = new PlayerInputActions();
             inputActions.Player.SetCallbacks(this);
+            inputActions.UI.SetCallbacks(this);
         }    
         
         inputActions.Player.Enable();
+        inputActions.UI.Enable();
     }
     
     public void OnMove(InputAction.CallbackContext context)
@@ -59,8 +61,10 @@ public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, Pl
         Exit.Invoke(context.phase == InputActionPhase.Performed);
     }
 
+
     public void OnVerticalNavigation(InputAction.CallbackContext context)
     {
+        VerticalNav.Invoke(context.ReadValue<float>());
     }
 
     public void OnHorizontalNavigation(InputAction.CallbackContext context)

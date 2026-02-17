@@ -28,11 +28,11 @@ public class StepperSettingVisuals : ItemVisuals
             
     }
 
-    private MultiOptionSetting dataSource = null;
+    private MultiOptionSetting DataSource;
 
     public void Initialize(MultiOptionSetting dataSource)
     {
-        this.dataSource = dataSource;
+        this.DataSource = dataSource;
 
         UpdateValue();
         
@@ -68,25 +68,25 @@ public class StepperSettingVisuals : ItemVisuals
     
     private void UpdateValue()
     {
-        ValueLabel.Text = dataSource.Options[dataSource.SelectedIndex];
+        ValueLabel.Text = DataSource.Options[DataSource.SelectedIndex];
     }
 
     private void HandleLeftArrowClicked(Gesture.OnClick evt)
     {
-        if (dataSource.SelectedIndex == 0)
+        if (DataSource.SelectedIndex == 0)
         {
-            dataSource.SelectedIndex = dataSource.Options.Length - 1;
+            DataSource.SelectedIndex = DataSource.Options.Length - 1;
         }else 
-            dataSource.SelectedIndex = Mathf.Max(0, dataSource.SelectedIndex - 1);
+            DataSource.SelectedIndex = Mathf.Max(0, DataSource.SelectedIndex - 1);
     }
 
     private void HandleRightArrowClicked(Gesture.OnClick evt)
     {
-        if (dataSource.SelectedIndex == dataSource.Options.Length - 1)
+        if (DataSource.SelectedIndex == DataSource.Options.Length - 1)
         {
-            dataSource.SelectedIndex = 0;
+            DataSource.SelectedIndex = 0;
         }else
-            dataSource.SelectedIndex = Mathf.Min(dataSource.Options.Length - 1, dataSource.SelectedIndex + 1);
+            DataSource.SelectedIndex = Mathf.Min(DataSource.Options.Length - 1, DataSource.SelectedIndex + 1);
     }
 
     #endregion

@@ -24,7 +24,7 @@ public class PopupBoxVisuals : ItemVisuals
 
     public event Action<int> OnButtonClicked;
     
-    private bool EventsRegistered = false;
+    private bool EventsRegistered;
     private List<PopupButtonData> currentButtons;
 
     public void Bind(PopupData data)

@@ -3,6 +3,7 @@ using UnityEngine;
 using Nova;
 using NovaSamples.UIControls;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.VisualScripting;
 
 [System.Serializable]
@@ -27,7 +28,8 @@ public class SettingsMenu : MonoBehaviour
 
     private void Start()
     {
-        //SettingsManager.Instance.LoadAllSettings();    
+        gameInput.EnableActions();
+        // SettingsManager.Instance.LoadAllSettings();    
 
         //Visual
         Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
@@ -69,7 +71,7 @@ public class SettingsMenu : MonoBehaviour
     {
         float nav = verticalNav;
         if (Time.unscaledTime < inputTimer) return;
-
+        
         if (nav > 0.5f)
         {
             MoveSelection(-1);
@@ -82,7 +84,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void MoveSelection(int direction)
     {
-        int newIndex = Mathf.Clamp(currentIndex + direction, 0, SettingsCollection.Count - 1);
+        int newIndex = Mathf.Clamp(currentIndex + direction, 0, currentSortedSettings.Count - 1);
 
         if (newIndex == currentIndex) return;
 
@@ -96,15 +98,26 @@ public class SettingsMenu : MonoBehaviour
 
     private void HighlightCurrentSetting()
     {
-        for (int i = 0; i < SettingsCollection.Count; i++)
+        for (int i = 0; i < currentSortedSettings.Count; i++)
         {
             if (SettingsList.TryGetItemView(i, out ItemView itemView))
             {
                 StepperSettingVisuals visuals = itemView.Visuals as StepperSettingVisuals;
-                visuals.isSelected = (i == currentIndex);
+                visuals.isSelected = i == currentIndex;
+                if (visuals.isSelected)
+                {
+                    visuals.Background.DOKill();
+                    visuals.Background.transform.DOScale(visuals.SettingLabel.transform.localScale * 1.05f, 0.15f).SetEase(Ease.OutBack);
+                }
+                else
+                {
+                    visuals.Background.DOKill();
+                    visuals.Background.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
+                }
             }
         }
     }
+
 
     #region HandleData
 
