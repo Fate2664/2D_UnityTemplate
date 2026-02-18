@@ -23,8 +23,10 @@ public class SettingsMenu : MonoBehaviour
     private float inputTimer;
     private float verticalNav;
     private float horizontalNav;
+    private float tabNav;
     private void OnVerticalNav(float dir) => verticalNav = dir;
     private void OnHorizontalNav(float dir) => horizontalNav = dir;
+    private void OnTabNav(float dir) => tabNav = dir; 
 
     private void Start()
     {
@@ -60,6 +62,7 @@ public class SettingsMenu : MonoBehaviour
 
         gameInput.VerticalNav += OnVerticalNav;
         gameInput.HorizontalNav += OnHorizontalNav;
+        gameInput.TabNav += OnTabNav;
 
     }
 
@@ -67,8 +70,25 @@ public class SettingsMenu : MonoBehaviour
     {
         HandleVerticalNavigation();
         HandleHorizontalNavigation();
+        HandleTabNavigation();
     }
 
+    #region Navigation
+
+    private void HandleTabNavigation()
+    {
+        float nav = tabNav;
+        if (Time.unscaledTime < inputTimer) return;
+
+        if (nav > 0.5f)
+        {
+            MoveTabSelection(1);
+        }
+        else if (nav < -0.5f)
+        {
+            MoveTabSelection(-1);
+        }
+    }
     private void HandleVerticalNavigation()
     {
         float nav = verticalNav;
@@ -99,6 +119,35 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
+    private void MoveTabSelection(int direction)
+    {
+        if (SettingsCollection == null || SettingsCollection.Count == 0)
+            return;
+
+        int tabCount = SettingsCollection.Count;
+        int newIndex = selectedIndex + direction;
+
+        // Wrap around
+        if (newIndex < 0)
+        {
+            newIndex = tabCount - 1;
+        }
+        else if (newIndex >= tabCount)
+        {
+            newIndex = 0;
+        }
+
+        if (newIndex == selectedIndex)
+            return;
+
+        if (TabBar.TryGetItemView(newIndex, out ItemView itemView))
+        {
+            SelectTab(itemView.Visuals as TabButtonVisuals, newIndex);
+        }
+
+        inputTimer = Time.unscaledTime + inputCooldown;
+    }
+    
     private void MoveHorizontalSelection(int direction)
     {
         if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
@@ -165,6 +214,7 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
+#endregion
 
     #region HandleData
 
@@ -221,6 +271,7 @@ public class SettingsMenu : MonoBehaviour
     {
         gameInput.VerticalNav -= OnVerticalNav;
         gameInput.HorizontalNav -= OnHorizontalNav;
+        gameInput.TabNav -= OnTabNav;
     }
 }
 

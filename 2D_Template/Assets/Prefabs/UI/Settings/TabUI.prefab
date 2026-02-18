@@ -400,7 +400,7 @@ Transform:
   m_GameObject: {fileID: 7585586170255095510}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -10, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -436,11 +436,11 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 0.18200001
-        Type: 1
+        Raw: 226.2
+        Type: 0
       Y:
-        Raw: 1.147
-        Type: 1
+        Raw: 86.71
+        Type: 0
       Z:
         Raw: 0
         Type: 0
@@ -449,17 +449,17 @@ MonoBehaviour:
         Raw: 0
         Type: 0
       Y:
-        Raw: -10
+        Raw: 0
         Type: 0
       Z:
         Raw: 0
         Type: 0
     Padding:
       Left:
-        Raw: 20
+        Raw: 0
         Type: 0
       Right:
-        Raw: 20
+        Raw: 0
         Type: 0
       Bottom:
         Raw: 0
@@ -596,7 +596,7 @@ MonoBehaviour:
     LightingModel: 0
     ShadowCastingMode: 2
     ReceiveShadows: 1
-  PreviewSize: {x: 1, y: 1, z: 0}
+  PreviewSize: {x: 226.2, y: 86.71, z: 0}
   visuals:
     Color: {r: 1, g: 1, b: 1, a: 1}
     CornerRadius:

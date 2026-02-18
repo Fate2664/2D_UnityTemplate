@@ -248,6 +248,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""TabNavigation"",
+                    ""type"": ""Value"",
+                    ""id"": ""2daca17e-bcf3-4655-b8b1-5d77e0027ff7"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -349,6 +358,39 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Apply"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""45df0c1b-faeb-4aa7-aa44-58beb45daa9d"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TabNavigation"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""3da8b58a-4b52-4297-9f3e-36016d8bd235"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TabNavigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""fd7d0651-53ca-4d43-83d1-382a623041a4"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""TabNavigation"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -367,6 +409,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_UI_HorizontalNavigation = m_UI.FindAction("Horizontal Navigation", throwIfNotFound: true);
         m_UI_RestoreDefaults = m_UI.FindAction("Restore Defaults", throwIfNotFound: true);
         m_UI_Apply = m_UI.FindAction("Apply", throwIfNotFound: true);
+        m_UI_TabNavigation = m_UI.FindAction("TabNavigation", throwIfNotFound: true);
     }
 
     ~@PlayerInputActions()
@@ -571,6 +614,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_UI_HorizontalNavigation;
     private readonly InputAction m_UI_RestoreDefaults;
     private readonly InputAction m_UI_Apply;
+    private readonly InputAction m_UI_TabNavigation;
     /// <summary>
     /// Provides access to input actions defined in input action map "UI".
     /// </summary>
@@ -602,6 +646,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "UI/Apply".
         /// </summary>
         public InputAction @Apply => m_Wrapper.m_UI_Apply;
+        /// <summary>
+        /// Provides access to the underlying input action "UI/TabNavigation".
+        /// </summary>
+        public InputAction @TabNavigation => m_Wrapper.m_UI_TabNavigation;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -643,6 +691,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Apply.started += instance.OnApply;
             @Apply.performed += instance.OnApply;
             @Apply.canceled += instance.OnApply;
+            @TabNavigation.started += instance.OnTabNavigation;
+            @TabNavigation.performed += instance.OnTabNavigation;
+            @TabNavigation.canceled += instance.OnTabNavigation;
         }
 
         /// <summary>
@@ -669,6 +720,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Apply.started -= instance.OnApply;
             @Apply.performed -= instance.OnApply;
             @Apply.canceled -= instance.OnApply;
+            @TabNavigation.started -= instance.OnTabNavigation;
+            @TabNavigation.performed -= instance.OnTabNavigation;
+            @TabNavigation.canceled -= instance.OnTabNavigation;
         }
 
         /// <summary>
@@ -773,5 +827,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnApply(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "TabNavigation" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnTabNavigation(InputAction.CallbackContext context);
     }
 }

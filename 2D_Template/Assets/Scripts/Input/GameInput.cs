@@ -18,8 +18,9 @@ public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, Pl
     public event UnityAction<bool> Apply  =  delegate { };
     public event UnityAction<float> VerticalNav  =  delegate { };
     public event UnityAction<float> HorizontalNav  =  delegate { };
-    
-        
+    public event UnityAction<float> TabNav = delegate { };
+
+
     private PlayerInputActions inputActions;
     
     
@@ -80,5 +81,10 @@ public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, Pl
     void PlayerInputActions.IUIActions.OnApply(InputAction.CallbackContext context)
     {
         Apply.Invoke(context.phase == InputActionPhase.Performed);
+    }
+
+    public void OnTabNavigation(InputAction.CallbackContext context)
+    {
+        TabNav.Invoke(context.ReadValue<float>());
     }
 }
