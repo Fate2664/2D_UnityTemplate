@@ -59,30 +59,77 @@ public class SettingsMenu : MonoBehaviour
 
 
         gameInput.VerticalNav += OnVerticalNav;
+        gameInput.HorizontalNav += OnHorizontalNav;
 
     }
 
     private void Update()
     {
-        HandleKeyboardNavigation();
+        HandleVerticalNavigation();
+        HandleHorizontalNavigation();
     }
 
-    private void HandleKeyboardNavigation()
+    private void HandleVerticalNavigation()
     {
         float nav = verticalNav;
         if (Time.unscaledTime < inputTimer) return;
         
         if (nav > 0.5f)
         {
-            MoveSelection(-1);
+            MoveVerticalSelection(-1);
         }
         else if (nav < -0.5f)
         {
-            MoveSelection(1);
+            MoveVerticalSelection(1);
         }
     }
 
-    private void MoveSelection(int direction)
+    private void HandleHorizontalNavigation()
+    {
+        float nav = horizontalNav;
+        if (Time.unscaledTime < inputTimer) return;
+
+        if (nav > 0.5f)
+        {
+            MoveHorizontalSelection(1);   
+        }
+        else if (nav < -0.5f)
+        {
+            MoveHorizontalSelection(-1);
+        }
+    }
+
+    private void MoveHorizontalSelection(int direction)
+    {
+        if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
+
+        var setting = currentSortedSettings[currentIndex] as MultiOptionSetting;
+        int newIndex = Mathf.Clamp(setting.SelectedIndex + direction, 0, setting.Options.Length - 1);
+
+        if (direction == -1 && setting.SelectedIndex == 0)
+        {
+            setting.SelectedIndex = setting.Options.Length - 1;
+        }
+        else if (direction == 1 && setting.SelectedIndex == setting.Options.Length - 1)
+        {
+            setting.SelectedIndex = 0;
+        }
+        else
+        {
+            setting.SelectedIndex = newIndex;
+        }
+        
+
+        if (SettingsList.TryGetItemView(currentIndex, out ItemView itemView))
+        {
+            var visuals = itemView.Visuals as StepperSettingVisuals;
+            visuals.Initialize(setting);
+        }
+
+        inputTimer = Time.unscaledTime + inputCooldown;
+    }
+
+    private void MoveVerticalSelection(int direction)
     {
         int newIndex = Mathf.Clamp(currentIndex + direction, 0, currentSortedSettings.Count - 1);
 
@@ -173,6 +220,7 @@ public class SettingsMenu : MonoBehaviour
     private void OnDisable()
     {
         gameInput.VerticalNav -= OnVerticalNav;
+        gameInput.HorizontalNav -= OnHorizontalNav;
     }
 }
 

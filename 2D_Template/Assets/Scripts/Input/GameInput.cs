@@ -69,6 +69,7 @@ public class GameInput : ScriptableObject, PlayerInputActions.IPlayerActions, Pl
 
     public void OnHorizontalNavigation(InputAction.CallbackContext context)
     {
+        HorizontalNav.Invoke(context.ReadValue<float>());
     }
 
     void PlayerInputActions.IUIActions.OnRestoreDefaults(InputAction.CallbackContext context)
