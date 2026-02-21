@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Nova;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 [System.Serializable]
@@ -22,9 +23,9 @@ public class PopupData
 public class PopupButtonData
 {
     public string label;
-    public Action Callback;
+    public UnityAction Callback;
 
-    public PopupButtonData(string label, Action callback)
+    public PopupButtonData(string label, UnityAction callback)
     {
         this.label = label;
         this.Callback = callback;

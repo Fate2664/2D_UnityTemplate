@@ -12,8 +12,8 @@ public class SettingsManager : MonoBehaviour
     public SettingsCollection VideoCollection;
     public SettingsCollection GameplayColleciton;
     public SettingsCollection AccessibilityCollection;
+    public SettingsMenu Menu;
 
-    private SettingsMenu Menu;
     private Dictionary<string, Setting> settingsLookup;
 
     private void Awake()

@@ -25,29 +25,30 @@ public class PopupBoxVisuals : ItemVisuals
     public event Action<int> OnButtonClicked;
     
     private bool EventsRegistered;
-    private List<PopupButtonData> currentButtons;
+    private List<PopupButtonData> currentButtonData;
 
     public void Bind(PopupData data)
     {
         EnsureEventHandlers();
                 
         PopupText.Text = data.message;
-        currentButtons = data.buttons;
+        currentButtonData = data.buttons;
         
-        ButtonList.SetDataSource(currentButtons);
+        ButtonList.SetDataSource(currentButtonData);
     }
     
     public void Show()
     {
-        PopupText.Visible = false;
-        Background.transform.localScale = Vector3.zero;
+        PopupText.Visible = true;
+        Background.Visible = true;
         Background.transform.DOScale(Vector3.one, PopinDuration).SetEase(Ease.OutBack);
     }
 
     public void Hide()
     {
-        Background.transform.DOScale(Vector3.one, PopinDuration).SetEase(Ease.InBack).OnComplete(() =>
+        Background.transform.DOScale(Vector3.zero, PopinDuration).SetEase(Ease.InBack).OnComplete(() =>
         {
+            PopupText.Visible = false;
             Background.Visible = false;
             ButtonList.SetDataSource<PopupButtonData>(null);
         });
@@ -55,13 +56,17 @@ public class PopupBoxVisuals : ItemVisuals
 
     public void EnsureEventHandlers()
     {
-        if (!EventsRegistered) EventsRegistered = true;
+        if (!EventsRegistered)
+        {
+            EventsRegistered = true;
+        }
+        else return;
         
         ButtonList.AddGestureHandler<Gesture.OnHover, PopupButtonVisuals>(HandleButtonHover);
         ButtonList.AddGestureHandler<Gesture.OnUnhover, PopupButtonVisuals>(HandleButtonUnHover);
-        
         ButtonList.AddDataBinder<PopupButtonData, PopupButtonVisuals>(BindButtonData);
-        ButtonList.AddGestureHandler<Gesture.OnClick, PopupBoxVisuals>(HandleButtonClick);
+        
+        ButtonList.AddGestureHandler<Gesture.OnClick, PopupButtonVisuals>(HandleButtonClick);
     }
 
     private void BindButtonData(Data.OnBind<PopupButtonData> evt, PopupButtonVisuals target, int index)
@@ -78,7 +83,7 @@ public class PopupBoxVisuals : ItemVisuals
     {
     }
 
-    private void HandleButtonClick(Gesture.OnClick evt, PopupBoxVisuals target, int index)
+    private void HandleButtonClick(Gesture.OnClick evt, PopupButtonVisuals target, int index)
     {
         OnButtonClicked?.Invoke(index);
     }

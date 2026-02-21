@@ -4,13 +4,16 @@ using Nova;
 using NovaSamples.UIControls;
 using System.Collections.Generic;
 using DG.Tweening;
+using NUnit.Framework;
 using Unity.VisualScripting;
+using UnityEngine.Events;
 
 [System.Serializable]
 public class SettingsMenu : MonoBehaviour
 {
     public UIBlock Root = null;
     public GameInput gameInput = null;
+    public PopupManager popup = null;
     public List<SettingsCollection> SettingsCollection = null;
     public ListView TabBar = null;
     public ListView SettingsList = null;
@@ -24,14 +27,15 @@ public class SettingsMenu : MonoBehaviour
     private float verticalNav;
     private float horizontalNav;
     private float tabNav;
+
     private void OnVerticalNav(float dir) => verticalNav = dir;
     private void OnHorizontalNav(float dir) => horizontalNav = dir;
-    private void OnTabNav(float dir) => tabNav = dir; 
+    private void OnTabNav(float dir) => tabNav = dir;
 
     private void Start()
     {
         gameInput.EnableActions();
-        // SettingsManager.Instance.LoadAllSettings();    
+        //SettingsManager.Instance.LoadAllSettings();    
 
         //Visual
         Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
@@ -63,14 +67,40 @@ public class SettingsMenu : MonoBehaviour
         gameInput.VerticalNav += OnVerticalNav;
         gameInput.HorizontalNav += OnHorizontalNav;
         gameInput.TabNav += OnTabNav;
-
+        gameInput.RestoreDefaults += OnRestoreDefaults;
     }
 
     private void Update()
     {
+        if (popup.IsOpen) return;
+
         HandleVerticalNavigation();
         HandleHorizontalNavigation();
         HandleTabNavigation();
+    }
+
+    private void OnRestoreDefaults(bool pressed)
+    {
+        if (!pressed || popup.IsOpen) return;
+
+        //Show Popup
+        PopupData popupData = new PopupData("Are you sure  you want to restore settings?", new List<PopupButtonData>
+        {
+            new ("Confirm", OnConfirmPressed),
+            new ("Cancel", OnCancelPressed)
+        });
+        
+        popup.Show(popupData);
+    }
+
+    private void OnConfirmPressed()
+    {
+        SettingsManager.Instance.ResetAllSettings();
+    }
+
+    private void OnCancelPressed()
+    {
+        
     }
 
     #region Navigation
@@ -89,11 +119,12 @@ public class SettingsMenu : MonoBehaviour
             MoveTabSelection(-1);
         }
     }
+
     private void HandleVerticalNavigation()
     {
         float nav = verticalNav;
         if (Time.unscaledTime < inputTimer) return;
-        
+
         if (nav > 0.5f)
         {
             MoveVerticalSelection(-1);
@@ -111,7 +142,7 @@ public class SettingsMenu : MonoBehaviour
 
         if (nav > 0.5f)
         {
-            MoveHorizontalSelection(1);   
+            MoveHorizontalSelection(1);
         }
         else if (nav < -0.5f)
         {
@@ -147,7 +178,7 @@ public class SettingsMenu : MonoBehaviour
 
         inputTimer = Time.unscaledTime + inputCooldown;
     }
-    
+
     private void MoveHorizontalSelection(int direction)
     {
         if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
@@ -167,7 +198,7 @@ public class SettingsMenu : MonoBehaviour
         {
             setting.SelectedIndex = newIndex;
         }
-        
+
 
         if (SettingsList.TryGetItemView(currentIndex, out ItemView itemView))
         {
@@ -203,7 +234,8 @@ public class SettingsMenu : MonoBehaviour
                 if (visuals.isSelected)
                 {
                     visuals.Background.DOKill();
-                    visuals.Background.transform.DOScale(visuals.SettingLabel.transform.localScale * 1.05f, 0.15f).SetEase(Ease.OutBack);
+                    visuals.Background.transform.DOScale(visuals.SettingLabel.transform.localScale * 1.05f, 0.15f)
+                        .SetEase(Ease.OutBack);
                 }
                 else
                 {
@@ -214,7 +246,7 @@ public class SettingsMenu : MonoBehaviour
         }
     }
 
-#endregion
+    #endregion
 
     #region HandleData
 
@@ -224,6 +256,7 @@ public class SettingsMenu : MonoBehaviour
         {
             return;
         }
+
         if (selectedIndex >= 0 && TabBar.TryGetItemView(selectedIndex, out ItemView currentItemView))
         {
             (currentItemView.Visuals as TabButtonVisuals).isSelected = false;
@@ -241,8 +274,10 @@ public class SettingsMenu : MonoBehaviour
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
     {
+        if (popup.IsOpen) return;
         var data = (MultiOptionSetting)currentSortedSettings[index];
     }
+
     private void HandleTabClicked(Gesture.OnClick evt, TabButtonVisuals target, int index)
     {
         SelectTab(target, index);
@@ -251,8 +286,6 @@ public class SettingsMenu : MonoBehaviour
     #endregion
 
     #region BindData
-
-
 
     private void BindTab(Data.OnBind<SettingsCollection> evt, TabButtonVisuals target, int index)
     {
@@ -272,6 +305,6 @@ public class SettingsMenu : MonoBehaviour
         gameInput.VerticalNav -= OnVerticalNav;
         gameInput.HorizontalNav -= OnHorizontalNav;
         gameInput.TabNav -= OnTabNav;
+        gameInput.RestoreDefaults -= OnRestoreDefaults;
     }
 }
-

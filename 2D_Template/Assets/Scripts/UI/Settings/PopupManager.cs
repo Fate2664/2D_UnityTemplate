@@ -4,12 +4,15 @@ public class PopupManager : MonoBehaviour
 {
     [SerializeField] private PopupBoxVisuals popup;
 
+    public bool IsOpen { get; private set; }
+    
     private PopupData currentData;
 
     public void Show(PopupData data)
     {
         currentData = data;
-
+        IsOpen = true;
+        
         popup.Bind(data);
         popup.OnButtonClicked += HandleButtonClicked;
         
@@ -26,5 +29,6 @@ public class PopupManager : MonoBehaviour
     {
         popup.OnButtonClicked -= HandleButtonClicked;
         popup.Hide();
+        IsOpen = false;
     }
 }
