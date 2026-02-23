@@ -31,4 +31,16 @@ public class PopupManager : MonoBehaviour
         popup.Hide();
         IsOpen = false;
     }
+
+    public void Confirm()
+    {
+        if (!IsOpen || currentData == null || currentData.buttons == null) return;
+        HandleButtonClicked(0);
+    }
+
+    public void Cancel()
+    {
+        if (!IsOpen || currentData == null || currentData.buttons == null) return;
+        HandleButtonClicked(1);
+    }
 }

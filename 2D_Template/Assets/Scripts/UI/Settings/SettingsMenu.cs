@@ -48,7 +48,7 @@ public class SettingsMenu : MonoBehaviour
     private void Start()
     {
         gameInput.EnableActions();
-        //SettingsManager.Instance.LoadAllSettings();    
+        SettingsManager.Instance.LoadAllSettings();    
 
         //Visual
         Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
@@ -81,15 +81,17 @@ public class SettingsMenu : MonoBehaviour
         gameInput.TabNav += OnTabNav;
         gameInput.RestoreDefaults += OnRestoreDefaults;
         gameInput.Apply += OnApply;
+        gameInput.Exit += OnExit;
     }
 
     private void Update()
     {
-        if (popup.IsOpen) return;
-
-        HandleVerticalNavigation();
-        HandleHorizontalNavigation();
-        HandleTabNavigation();
+        if (!popup.IsOpen)
+        {
+            HandleVerticalNavigation();
+            HandleHorizontalNavigation();
+            HandleTabNavigation();
+        }
     }
 
     #region Popups
@@ -97,28 +99,53 @@ public class SettingsMenu : MonoBehaviour
     private void OnApply(bool pressed)
     {
         if (!pressed) return;
-        
+
+        if (popup.IsOpen)
+        {
+            popup.Confirm();
+            return;
+        }
+
         //Show Popup
         PopupData popupData = new PopupData(PopupType.ApplySettings, "Apply Settings?", new List<PopupButtonData>
         {
-            new  ("Confirm", OnConfirmPressed),
-            new  ("Cancel", OnCancelPressed)
+            new("Confirm", OnConfirmPressed),
+            new("Cancel", OnCancelPressed)
         });
-        
+
         popup.Show(popupData);
+    }
+    
+    private void OnExit(bool pressed)
+    {
+        if (popup.IsOpen)
+        {
+            popup.Cancel();
+            return;
+        }
+        
+        //Check if settings are saved
+        //IF they are not then show popup
+        //IF they are then return to main menu 
     }
 
     private void OnRestoreDefaults(bool pressed)
     {
         if (!pressed || popup.IsOpen) return;
 
-        //Show Popup
-        PopupData popupData = new PopupData(PopupType.RestoreDefaults, "Restore Settings to Defaults?", new List<PopupButtonData>
+        if (popup.IsOpen)
         {
-            new ("Confirm", OnConfirmPressed),
-            new ("Cancel", OnCancelPressed)
-        });
+            popup.Confirm();
+        }
         
+        //Show Popup
+        PopupData popupData = new PopupData(PopupType.RestoreDefaults, "Restore Settings to Defaults?",
+            new List<PopupButtonData>
+            {
+                new("Confirm", OnConfirmPressed),
+                new("Cancel", OnCancelPressed)
+            });
+
         popup.Show(popupData);
     }
 
@@ -127,6 +154,7 @@ public class SettingsMenu : MonoBehaviour
         switch (popupType)
         {
             case PopupType.ApplySettings:
+                SettingsManager.Instance.SaveAllSettings();
                 break;
             case PopupType.RestoreDefaults:
                 SettingsManager.Instance.ResetAllSettings();
@@ -136,11 +164,10 @@ public class SettingsMenu : MonoBehaviour
 
     private void OnCancelPressed(PopupType popupType)
     {
-        
     }
 
     #endregion
-    
+
     #region Navigation
 
     private void HandleTabNavigation()
@@ -313,7 +340,22 @@ public class SettingsMenu : MonoBehaviour
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
     {
         if (popup.IsOpen) return;
-        var data = (MultiOptionSetting)currentSortedSettings[index];
+        var data = currentSortedSettings[index] as MultiOptionSetting;
+        data.OnIndexChanged += _ =>
+        {
+            if (!(data.SelectedIndex ==
+                  PlayerPrefs.GetInt(data.Key, data.SelectedIndex)))
+            {
+                if (SettingsList.TryGetItemView(currentIndex, out ItemView itemView))
+                {
+                    StepperSettingVisuals visuals = itemView.Visuals as StepperSettingVisuals;
+                    if (visuals.SettingLabel.Text[visuals.SettingLabel.Text.Length - 1] != '*')
+                    {
+                        visuals.SettingLabel.Text += "*";
+                    }
+                }
+            } 
+        };
     }
 
     private void HandleTabClicked(Gesture.OnClick evt, TabButtonVisuals target, int index)
@@ -345,5 +387,6 @@ public class SettingsMenu : MonoBehaviour
         gameInput.TabNav -= OnTabNav;
         gameInput.RestoreDefaults -= OnRestoreDefaults;
         gameInput.Apply -= OnApply;
+        gameInput.Exit -= OnExit;
     }
 }

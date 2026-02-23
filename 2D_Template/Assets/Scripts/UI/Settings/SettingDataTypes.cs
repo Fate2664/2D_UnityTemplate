@@ -88,7 +88,7 @@ public class MultiOptionSetting : Setting
     private const string NothingSelected = "None";
     public SettingType Type;
     public string[] Options = new string[0];
-    public int selectedIndex;
+    private int selectedIndex;
     public int DefaultIndex = 0;
     public event Action<Setting> OnIndexChanged;
 

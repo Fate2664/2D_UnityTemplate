@@ -76,7 +76,6 @@ public class PopupBoxVisuals : ItemVisuals
 
     internal static void HandleButtonHover(Gesture.OnHover evt, PopupButtonVisuals target, int index)
     {
-        
     }
 
     internal static void HandleButtonUnHover(Gesture.OnUnhover evt, PopupButtonVisuals target, int index)

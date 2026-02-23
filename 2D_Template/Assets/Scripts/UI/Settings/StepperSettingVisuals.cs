@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Nova;
 using UnityEngine;
+using UnityEngine.PlayerLoop;
 
 [System.Serializable]
 public class StepperSettingVisuals : ItemVisuals
@@ -86,6 +87,7 @@ public class StepperSettingVisuals : ItemVisuals
             DataSource.SelectedIndex = DataSource.Options.Length - 1;
         }else 
             DataSource.SelectedIndex = Mathf.Max(0, DataSource.SelectedIndex - 1);
+
     }
 
     private void HandleRightArrowClicked(Gesture.OnClick evt)
