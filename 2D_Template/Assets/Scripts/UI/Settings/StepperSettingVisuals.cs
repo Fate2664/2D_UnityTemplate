@@ -49,6 +49,8 @@ public class StepperSettingVisuals : ItemVisuals
     
     internal static void HandleHover(Gesture.OnHover evt, StepperSettingVisuals target)
     {
+        if (SettingsMenu.Instance.popup.IsOpen) return;
+        
         target.Background.DOKill();
         target.Background.transform.DOScale(target.SettingLabel.transform.localScale * HoverScale, 0.15f).SetEase(Ease.OutBack);
         target.isSelected = true;
@@ -56,6 +58,8 @@ public class StepperSettingVisuals : ItemVisuals
 
     internal static void HandleUnHover(Gesture.OnUnhover evt, StepperSettingVisuals target)
     {
+        if (SettingsMenu.Instance.popup.IsOpen) return;
+        
         target.Background.DOKill();
         target.Background.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
         target.isSelected = false;
@@ -63,6 +67,8 @@ public class StepperSettingVisuals : ItemVisuals
 
     internal static void HandlePress(Gesture.OnPress evt, StepperSettingVisuals target)
     {
+        if (SettingsMenu.Instance.popup.IsOpen) return;
+        
         //Play SFX
     }
     
@@ -73,6 +79,8 @@ public class StepperSettingVisuals : ItemVisuals
 
     private void HandleLeftArrowClicked(Gesture.OnClick evt)
     {
+        if (SettingsMenu.Instance.popup.IsOpen) return;
+        
         if (DataSource.SelectedIndex == 0)
         {
             DataSource.SelectedIndex = DataSource.Options.Length - 1;
@@ -82,6 +90,8 @@ public class StepperSettingVisuals : ItemVisuals
 
     private void HandleRightArrowClicked(Gesture.OnClick evt)
     {
+        if (SettingsMenu.Instance.popup.IsOpen) return;
+        
         if (DataSource.SelectedIndex == DataSource.Options.Length - 1)
         {
             DataSource.SelectedIndex = 0;

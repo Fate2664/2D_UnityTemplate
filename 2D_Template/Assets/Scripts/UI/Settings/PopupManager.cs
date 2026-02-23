@@ -21,7 +21,7 @@ public class PopupManager : MonoBehaviour
 
     private void HandleButtonClicked(int index)
     {
-        currentData.buttons[index].Callback?.Invoke();
+        currentData.buttons[index].Callback?.Invoke(currentData.type);
         Hide();
     }
 

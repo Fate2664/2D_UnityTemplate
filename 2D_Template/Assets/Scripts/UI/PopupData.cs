@@ -5,15 +5,23 @@ using Nova;
 using UnityEngine;
 using UnityEngine.Events;
 
+public enum PopupType
+{
+    RestoreDefaults,
+    ApplySettings,
+}
+
 
 [System.Serializable]
 public class PopupData
 {
+    public PopupType type;
     public string message;
     public List<PopupButtonData> buttons;
     
-    public PopupData(string message, List<PopupButtonData> buttons)
+    public PopupData(PopupType type, string message, List<PopupButtonData> buttons)
     {
+        this.type = type;
         this.message = message;
         this.buttons =  buttons;
     }
@@ -23,9 +31,9 @@ public class PopupData
 public class PopupButtonData
 {
     public string label;
-    public UnityAction Callback;
-
-    public PopupButtonData(string label, UnityAction callback)
+    public UnityAction<PopupType> Callback;
+    
+    public PopupButtonData(string label, UnityAction<PopupType> callback)
     {
         this.label = label;
         this.Callback = callback;

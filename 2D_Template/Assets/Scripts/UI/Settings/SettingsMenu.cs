@@ -11,6 +11,7 @@ using UnityEngine.Events;
 [System.Serializable]
 public class SettingsMenu : MonoBehaviour
 {
+    public static SettingsMenu Instance;
     public UIBlock Root = null;
     public GameInput gameInput = null;
     public PopupManager popup = null;
@@ -31,6 +32,18 @@ public class SettingsMenu : MonoBehaviour
     private void OnVerticalNav(float dir) => verticalNav = dir;
     private void OnHorizontalNav(float dir) => horizontalNav = dir;
     private void OnTabNav(float dir) => tabNav = dir;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(Instance);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(Instance);
+    }
 
     private void Start()
     {
@@ -63,11 +76,11 @@ public class SettingsMenu : MonoBehaviour
             SelectTab(firstTab.Visuals as TabButtonVisuals, 0);
         }
 
-
         gameInput.VerticalNav += OnVerticalNav;
         gameInput.HorizontalNav += OnHorizontalNav;
         gameInput.TabNav += OnTabNav;
         gameInput.RestoreDefaults += OnRestoreDefaults;
+        gameInput.Apply += OnApply;
     }
 
     private void Update()
@@ -79,12 +92,28 @@ public class SettingsMenu : MonoBehaviour
         HandleTabNavigation();
     }
 
+    #region Popups
+
+    private void OnApply(bool pressed)
+    {
+        if (!pressed) return;
+        
+        //Show Popup
+        PopupData popupData = new PopupData(PopupType.ApplySettings, "Apply Settings?", new List<PopupButtonData>
+        {
+            new  ("Confirm", OnConfirmPressed),
+            new  ("Cancel", OnCancelPressed)
+        });
+        
+        popup.Show(popupData);
+    }
+
     private void OnRestoreDefaults(bool pressed)
     {
         if (!pressed || popup.IsOpen) return;
 
         //Show Popup
-        PopupData popupData = new PopupData("Are you sure  you want to restore settings?", new List<PopupButtonData>
+        PopupData popupData = new PopupData(PopupType.RestoreDefaults, "Restore Settings to Defaults?", new List<PopupButtonData>
         {
             new ("Confirm", OnConfirmPressed),
             new ("Cancel", OnCancelPressed)
@@ -93,16 +122,25 @@ public class SettingsMenu : MonoBehaviour
         popup.Show(popupData);
     }
 
-    private void OnConfirmPressed()
+    private void OnConfirmPressed(PopupType popupType)
     {
-        SettingsManager.Instance.ResetAllSettings();
+        switch (popupType)
+        {
+            case PopupType.ApplySettings:
+                break;
+            case PopupType.RestoreDefaults:
+                SettingsManager.Instance.ResetAllSettings();
+                break;
+        }
     }
 
-    private void OnCancelPressed()
+    private void OnCancelPressed(PopupType popupType)
     {
         
     }
 
+    #endregion
+    
     #region Navigation
 
     private void HandleTabNavigation()
@@ -306,5 +344,6 @@ public class SettingsMenu : MonoBehaviour
         gameInput.HorizontalNav -= OnHorizontalNav;
         gameInput.TabNav -= OnTabNav;
         gameInput.RestoreDefaults -= OnRestoreDefaults;
+        gameInput.Apply -= OnApply;
     }
 }
