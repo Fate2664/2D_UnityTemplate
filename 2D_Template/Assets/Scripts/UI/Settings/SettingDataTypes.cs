@@ -1,4 +1,5 @@
 using System;
+using Nova;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -103,7 +104,7 @@ public class MultiOptionSetting : Setting
     }
     
     public string CurrentSelection => SelectedIndex >= 0 && SelectedIndex < Options.Length ? Options[SelectedIndex] : NothingSelected;
-    
+    public bool HasUnsavedChanges => SelectedIndex != PlayerPrefs.GetInt(Key, SelectedIndex);
     public void Save() => PlayerPrefs.SetInt(Key, SelectedIndex);
     public void Load() => SelectedIndex = PlayerPrefs.GetInt(Key, DefaultIndex);
 
@@ -143,7 +144,22 @@ public class ResolutionSetting : MultiOptionSetting
 [System.Serializable]
 public class StepperSetting : MultiOptionSetting
 {
-    
+    public void MoveSelection(int direction)
+    {
+        if (Options == null || Options.Length == 0 || direction == 0 || SettingsMenu.Instance.popup.IsOpen) return;
+
+        switch (direction)
+        {
+            case -1:
+                if (SelectedIndex == 0) SelectedIndex = Options.Length - 1;
+                else SelectedIndex = Mathf.Max(0, SelectedIndex - 1);
+                break;
+            case 1:
+                if (SelectedIndex == Options.Length - 1) SelectedIndex = 0;
+                else SelectedIndex = Mathf.Min(Options.Length - 1, SelectedIndex + 1);
+                break;
+        }
+    }
 }
 
 

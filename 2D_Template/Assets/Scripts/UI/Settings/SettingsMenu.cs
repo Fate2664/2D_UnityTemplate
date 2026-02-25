@@ -59,7 +59,7 @@ public class SettingsMenu : MonoBehaviour
         SettingsList.AddGestureHandler<Gesture.OnClick, StepperSettingVisuals>(HandleStepperClick);
 
         //Data Binding
-        SettingsList.AddDataBinder<MultiOptionSetting, StepperSettingVisuals>(BindStepperSetting);
+        SettingsList.AddDataBinder<StepperSetting, StepperSettingVisuals>(BindStepperSetting);
 
 
         //Tabs
@@ -160,6 +160,7 @@ public class SettingsMenu : MonoBehaviour
                 SettingsManager.Instance.ResetAllSettings();
                 break;
         }
+        
     }
 
     private void OnCancelPressed(PopupType popupType)
@@ -248,22 +249,8 @@ public class SettingsMenu : MonoBehaviour
     {
         if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
 
-        var setting = currentSortedSettings[currentIndex] as MultiOptionSetting;
-        int newIndex = Mathf.Clamp(setting.SelectedIndex + direction, 0, setting.Options.Length - 1);
-
-        if (direction == -1 && setting.SelectedIndex == 0)
-        {
-            setting.SelectedIndex = setting.Options.Length - 1;
-        }
-        else if (direction == 1 && setting.SelectedIndex == setting.Options.Length - 1)
-        {
-            setting.SelectedIndex = 0;
-        }
-        else
-        {
-            setting.SelectedIndex = newIndex;
-        }
-
+        var setting = currentSortedSettings[currentIndex] as StepperSetting;
+        setting.MoveSelection(direction);
 
         if (SettingsList.TryGetItemView(currentIndex, out ItemView itemView))
         {
@@ -339,23 +326,7 @@ public class SettingsMenu : MonoBehaviour
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
     {
-        if (popup.IsOpen) return;
-        var data = currentSortedSettings[index] as MultiOptionSetting;
-        data.OnIndexChanged += _ =>
-        {
-            if (!(data.SelectedIndex ==
-                  PlayerPrefs.GetInt(data.Key, data.SelectedIndex)))
-            {
-                if (SettingsList.TryGetItemView(currentIndex, out ItemView itemView))
-                {
-                    StepperSettingVisuals visuals = itemView.Visuals as StepperSettingVisuals;
-                    if (visuals.SettingLabel.Text[visuals.SettingLabel.Text.Length - 1] != '*')
-                    {
-                        visuals.SettingLabel.Text += "*";
-                    }
-                }
-            } 
-        };
+        var data = currentSortedSettings[index] as StepperSetting;
     }
 
     private void HandleTabClicked(Gesture.OnClick evt, TabButtonVisuals target, int index)
@@ -372,7 +343,7 @@ public class SettingsMenu : MonoBehaviour
         target.label.Text = evt.UserData.Category;
     }
 
-    private void BindStepperSetting(Data.OnBind<MultiOptionSetting> evt, StepperSettingVisuals target, int index)
+    private void BindStepperSetting(Data.OnBind<StepperSetting> evt, StepperSettingVisuals target, int index)
     {
         target.SettingLabel.Text = evt.UserData.Name;
         target.Initialize(evt.UserData);
