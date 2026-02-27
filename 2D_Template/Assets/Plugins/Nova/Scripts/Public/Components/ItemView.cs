@@ -48,7 +48,7 @@ namespace Nova
     [RequireComponent(typeof(UIBlock)), DisallowMultipleComponent]
     [HelpURL("https://novaui.io/manual/ItemView.html")]
     [AddComponentMenu("Nova/Item View")]
-    public sealed class ItemView : MonoBehaviour, InternalType_523, InternalType_4
+    public class ItemView : MonoBehaviour, InternalType_523, InternalType_4
     {
         #region Public
         /// <summary>

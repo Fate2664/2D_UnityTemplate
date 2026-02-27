@@ -312,6 +312,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+  m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &7406192247182490856
 MonoBehaviour:
@@ -342,7 +343,7 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 204.13995
+        Raw: 228.13995
         Type: 0
       Y:
         Raw: 60
@@ -560,7 +561,8 @@ MonoBehaviour:
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
-  m_characterSpacing: -6
+  m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -625,7 +627,7 @@ Transform:
   m_GameObject: {fileID: 6767136349202442533}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 141.92728, y: 0, z: 0}
+  m_LocalPosition: {x: 153.92728, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -967,7 +969,7 @@ Transform:
   m_GameObject: {fileID: 7111312262354707697}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -141.92728, y: 0, z: 0}
+  m_LocalPosition: {x: -153.92728, y: 0, z: 0}
   m_LocalScale: {x: 7, y: 7, z: 7}
   m_ConstrainProportionsScale: 1
   m_Children: []

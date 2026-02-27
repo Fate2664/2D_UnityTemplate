@@ -164,6 +164,7 @@ public class SettingsManager : MonoBehaviour
             }
         }
         PlayerPrefs.Save();
+        Menu.SettingsList.Refresh();
     }
 
     public void UpdateSetting(Setting setting)

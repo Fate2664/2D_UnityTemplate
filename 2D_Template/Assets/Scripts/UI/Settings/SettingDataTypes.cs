@@ -24,7 +24,7 @@ public abstract class Setting
 [System.Serializable]
 public class BoolSetting : Setting
 {
-    [FormerlySerializedAs("State")] public bool state;
+    public bool state;
     public bool DefaultState = false;
     public SettingType Type;
     public event Action<Setting> OnStateChanged;

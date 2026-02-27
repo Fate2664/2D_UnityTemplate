@@ -82,8 +82,7 @@ public class StepperSettingVisuals : ItemVisuals
 
     private void CheckLabel()
     {
-        if (DataSource.SelectedIndex !=
-            PlayerPrefs.GetInt(DataSource.Key, DataSource.SelectedIndex))
+        if (DataSource.HasUnsavedChanges)
         {
             if (SettingLabel.Text[SettingLabel.Text.Length - 1] != '*')
             {
@@ -91,7 +90,7 @@ public class StepperSettingVisuals : ItemVisuals
             }
         }
         else 
-        if (DataSource.SelectedIndex == PlayerPrefs.GetInt(DataSource.Key, DataSource.SelectedIndex))
+        if (!DataSource.HasUnsavedChanges)
         {
             if (SettingLabel.Text[SettingLabel.Text.Length - 1] == '*')
             {

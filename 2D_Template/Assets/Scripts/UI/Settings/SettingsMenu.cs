@@ -54,13 +54,17 @@ public class SettingsMenu : MonoBehaviour
         Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
         Root.AddGestureHandler<Gesture.OnUnhover, StepperSettingVisuals>(StepperSettingVisuals.HandleUnHover);
         Root.AddGestureHandler<Gesture.OnPress, StepperSettingVisuals>(StepperSettingVisuals.HandlePress);
+        Root.AddGestureHandler<Gesture.OnHover, ToggleSettingVisuals>(ToggleSettingVisuals.HandleHover);
+        Root.AddGestureHandler<Gesture.OnUnhover, ToggleSettingVisuals>(ToggleSettingVisuals.HandleUnHover);
+        Root.AddGestureHandler<Gesture.OnPress, ToggleSettingVisuals>(ToggleSettingVisuals.HandlePress);
 
         //State Changing
         SettingsList.AddGestureHandler<Gesture.OnClick, StepperSettingVisuals>(HandleStepperClick);
+        SettingsList.AddGestureHandler<Gesture.OnClick, ToggleSettingVisuals>(HandleToggleClick);
 
         //Data Binding
         SettingsList.AddDataBinder<StepperSetting, StepperSettingVisuals>(BindStepperSetting);
-
+        SettingsList.AddDataBinder<BoolSetting, ToggleSettingVisuals>(BindToggleSetting);
 
         //Tabs
         TabBar.AddDataBinder<SettingsCollection, TabButtonVisuals>(BindTab);
@@ -323,6 +327,13 @@ public class SettingsMenu : MonoBehaviour
         currentIndex = 0;
         HighlightCurrentSetting();
     }
+    
+    private void HandleToggleClick(Gesture.OnClick evt, ToggleSettingVisuals target, int index)
+    {
+        BoolSetting setting = currentSortedSettings[index] as BoolSetting;
+        setting.state = !setting.state;
+        target.isSelected = setting.state;
+    }
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
     {
@@ -341,6 +352,11 @@ public class SettingsMenu : MonoBehaviour
     private void BindTab(Data.OnBind<SettingsCollection> evt, TabButtonVisuals target, int index)
     {
         target.label.Text = evt.UserData.Category;
+    }
+    
+    private void BindToggleSetting(Data.OnBind<BoolSetting> evt, ToggleSettingVisuals target, int index)
+    {
+        target.SettingLabel.Text = evt.UserData.Name;
     }
 
     private void BindStepperSetting(Data.OnBind<StepperSetting> evt, StepperSettingVisuals target, int index)
