@@ -18,14 +18,22 @@ public class ToggleSettingVisuals : ItemVisuals
 
     public bool isSelected
     {
-        get => CheckMark.BodyEnabled;
+        get => Background.BodyEnabled;
         set
         {
-            CheckMark.BodyEnabled = value;
             Background.BodyEnabled = value;
             SettingLabel.Color = value ? Color.black : Color.white;
+            CheckBox.Color = value ? Color.white : Color.black;
+            CheckBox.Border.Color = value ? Color.black : Color.white;
+            CheckBox.Border.Width = value ? 6f : 4f;
             CheckMark.SetImage(value ? BlackCheckMark : WhiteCheckMark);
         }
+    }
+
+    public bool isCheckedVisual
+    {
+        get => CheckMark.BodyEnabled;
+        set => CheckMark.BodyEnabled = value;
     }
 
     public static void HandleHover(Gesture.OnHover evt, ToggleSettingVisuals target)

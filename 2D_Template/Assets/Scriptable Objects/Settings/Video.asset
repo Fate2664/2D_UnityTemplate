@@ -16,9 +16,18 @@ MonoBehaviour:
   Settings:
   - rid: 8727705807933669445
   - rid: 8727705807933669446
+  - rid: 5843491539921141899
   references:
     version: 2
     RefIds:
+    - rid: 5843491539921141899
+      type: {class: BoolSetting, ns: , asm: Assembly-CSharp}
+      data:
+        Key: Particle Effects Enabled
+        Name: Particle Effects Enabled
+        Order: 0
+        DefaultState: 1
+        Type: 1
     - rid: 8727705807933669445
       type: {class: StepperSetting, ns: , asm: Assembly-CSharp}
       data:
@@ -31,18 +40,16 @@ MonoBehaviour:
         - Medium
         - High
         - Epic
-        selectedIndex: 2
         DefaultIndex: 2
     - rid: 8727705807933669446
       type: {class: StepperSetting, ns: , asm: Assembly-CSharp}
       data:
         Key: Render Mode
         Name: Render Mode
-        Order: 0
+        Order: 2
         Type: 1
         Options:
         - Windowed
         - Windowed Borderless
         - Fullscreen
-        selectedIndex: 1
         DefaultIndex: 2

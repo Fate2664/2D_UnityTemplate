@@ -83,7 +83,7 @@ public class SettingsManager : MonoBehaviour
         if (settingsLookup != null && settingsLookup.TryGetValue(key, out Setting setting))
         {
             if (setting is BoolSetting boolSetting)
-                return boolSetting.State;
+                return boolSetting.IsChecked;
         }
         return defualtValue;
     }

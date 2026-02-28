@@ -48,7 +48,7 @@ public class SettingsMenu : MonoBehaviour
     private void Start()
     {
         gameInput.EnableActions();
-        SettingsManager.Instance.LoadAllSettings();    
+        SettingsManager.Instance.LoadAllSettings();
 
         //Visual
         Root.AddGestureHandler<Gesture.OnHover, StepperSettingVisuals>(StepperSettingVisuals.HandleHover);
@@ -88,7 +88,7 @@ public class SettingsMenu : MonoBehaviour
         gameInput.Exit += OnExit;
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
         if (!popup.IsOpen)
         {
@@ -119,7 +119,7 @@ public class SettingsMenu : MonoBehaviour
 
         popup.Show(popupData);
     }
-    
+
     private void OnExit(bool pressed)
     {
         if (popup.IsOpen)
@@ -127,7 +127,7 @@ public class SettingsMenu : MonoBehaviour
             popup.Cancel();
             return;
         }
-        
+
         //Check if settings are saved
         //IF they are not then show popup
         //IF they are then return to main menu 
@@ -141,7 +141,7 @@ public class SettingsMenu : MonoBehaviour
         {
             popup.Confirm();
         }
-        
+
         //Show Popup
         PopupData popupData = new PopupData(PopupType.RestoreDefaults, "Restore Settings to Defaults?",
             new List<PopupButtonData>
@@ -164,7 +164,6 @@ public class SettingsMenu : MonoBehaviour
                 SettingsManager.Instance.ResetAllSettings();
                 break;
         }
-        
     }
 
     private void OnCancelPressed(PopupType popupType)
@@ -252,14 +251,34 @@ public class SettingsMenu : MonoBehaviour
     private void MoveHorizontalSelection(int direction)
     {
         if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
+        
+        //TODO create a method to check current setting visuals
+        
+        Setting currentSetting = currentSortedSettings[currentIndex];
 
-        var setting = currentSortedSettings[currentIndex] as StepperSetting;
-        setting.MoveSelection(direction);
-
-        if (SettingsList.TryGetItemView(currentIndex, out ItemView itemView))
+        switch (currentSetting)
         {
-            var visuals = itemView.Visuals as StepperSettingVisuals;
-            visuals.Initialize(setting);
+            case StepperSetting stepper:
+                stepper.MoveSelection(direction);
+                if (SettingsList.TryGetItemView(currentIndex, out ItemView stepperView) &&
+                    stepperView.Visuals is StepperSettingVisuals stepperVisuals)
+                {
+                    stepperVisuals.Initialize(stepper);
+                }
+                break;
+
+            case BoolSetting toggle:
+                if (direction != 0)
+                {
+                    toggle.IsChecked = !toggle.IsChecked;
+                }
+
+                if (SettingsList.TryGetItemView(currentIndex, out ItemView toggleView) &&
+                    toggleView.Visuals is ToggleSettingVisuals toggleVisuals)
+                {
+                    toggleVisuals.isCheckedVisual = toggle.IsChecked;
+                }
+                break;
         }
 
         inputTimer = Time.unscaledTime + inputCooldown;
@@ -283,22 +302,38 @@ public class SettingsMenu : MonoBehaviour
     {
         for (int i = 0; i < currentSortedSettings.Count; i++)
         {
-            if (SettingsList.TryGetItemView(i, out ItemView itemView))
-            {
-                StepperSettingVisuals visuals = itemView.Visuals as StepperSettingVisuals;
-                visuals.isSelected = i == currentIndex;
-                if (visuals.isSelected)
-                {
-                    visuals.Background.DOKill();
-                    visuals.Background.transform.DOScale(visuals.SettingLabel.transform.localScale * 1.05f, 0.15f)
-                        .SetEase(Ease.OutBack);
-                }
-                else
-                {
-                    visuals.Background.DOKill();
-                    visuals.Background.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
-                }
-            }
+            if (!SettingsList.TryGetItemView(i, out ItemView itemView))
+                continue;
+
+            ApplyHighlight(itemView.Visuals, i == currentIndex);
+        }
+    }
+
+    private void ApplyHighlight(ItemVisuals visuals, bool selected)
+    {
+        switch (visuals)
+        {
+            case StepperSettingVisuals stepper:
+                stepper.isSelected = selected;
+                AnimateHighlight(stepper.Background, selected);
+                break;
+            case ToggleSettingVisuals toggle:
+                toggle.isSelected = selected;
+                AnimateHighlight(toggle.Background, selected);
+                break;
+        }
+    }
+
+    private void AnimateHighlight(UIBlock2D background, bool selected)
+    {
+        background.DOKill();
+        if (selected)
+        {
+            background.transform.DOScale(Vector3.one * 1.05f, 0.15f).SetEase(Ease.OutBack);
+        }
+        else
+        {
+            background.transform.DOScale(Vector3.one, 0.15f).SetEase(Ease.OutQuad);
         }
     }
 
@@ -327,12 +362,12 @@ public class SettingsMenu : MonoBehaviour
         currentIndex = 0;
         HighlightCurrentSetting();
     }
-    
+
     private void HandleToggleClick(Gesture.OnClick evt, ToggleSettingVisuals target, int index)
     {
         BoolSetting setting = currentSortedSettings[index] as BoolSetting;
-        setting.state = !setting.state;
-        target.isSelected = setting.state;
+        setting.IsChecked = !setting.IsChecked;
+        target.isCheckedVisual = setting.IsChecked;
     }
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
@@ -353,7 +388,7 @@ public class SettingsMenu : MonoBehaviour
     {
         target.label.Text = evt.UserData.Category;
     }
-    
+
     private void BindToggleSetting(Data.OnBind<BoolSetting> evt, ToggleSettingVisuals target, int index)
     {
         target.SettingLabel.Text = evt.UserData.Name;

@@ -24,27 +24,27 @@ public abstract class Setting
 [System.Serializable]
 public class BoolSetting : Setting
 {
-    public bool state;
+    private bool isChecked;
     public bool DefaultState = false;
     public SettingType Type;
     public event Action<Setting> OnStateChanged;
 
-    public bool State
+    public bool IsChecked
     {
-        get => state;
+        get => isChecked;
         set
         {
-            this.state = value;
+            this.isChecked = value;
             OnStateChanged?.Invoke(this);
         }
     }
     
-    public void Save() => PlayerPrefs.SetInt(Key, state ? 1 : 0);
-    public void Load() => state = PlayerPrefs.GetInt(Key, DefaultState ? 1 : 0) == 1;
+    public void Save() => PlayerPrefs.SetInt(Key, IsChecked ? 1 : 0);
+    public void Load() => IsChecked = PlayerPrefs.GetInt(Key, DefaultState ? 1 : 0) == 1;
 
     public override void ResetToDefault()
     {
-        State = DefaultState;
+        IsChecked = DefaultState;
         Save();
     }
 }
