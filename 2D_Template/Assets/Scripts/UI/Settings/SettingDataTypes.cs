@@ -10,7 +10,7 @@ public abstract class Setting
     public string Name;
     public int Order = 0;
 
-    public enum SettingType
+    public enum SettingCategory
     {
         Audio,
         Video,
@@ -26,7 +26,7 @@ public class BoolSetting : Setting
 {
     private bool isChecked;
     public bool DefaultState = false;
-    public SettingType Type;
+    public SettingCategory category;
     public event Action<Setting> OnStateChanged;
 
     public bool IsChecked
@@ -58,7 +58,7 @@ public class FloatSetting : Setting
     public float Max;
     public string ValueFormat = "{0:0.0}";
     public float DefaultValue = 50f;
-    public SettingType Type;
+    public SettingCategory category;
     public event Action<Setting> OnValueChanged;
 
     public float Value
@@ -87,7 +87,7 @@ public class FloatSetting : Setting
 public class MultiOptionSetting : Setting
 {
     private const string NothingSelected = "None";
-    public SettingType Type;
+    public SettingCategory category;
     public string[] Options = new string[0];
     private int selectedIndex;
     public int DefaultIndex = 0;

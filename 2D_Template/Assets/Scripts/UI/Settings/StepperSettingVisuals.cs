@@ -14,7 +14,7 @@ public class StepperSettingVisuals : ItemVisuals
     public Texture2D WhiteArrow = null;
     public Texture2D BlackArrow = null;
     public static float HoverScale = 1.05f;
-
+    
     public bool isSelected
     {
         get => Background.BodyEnabled;

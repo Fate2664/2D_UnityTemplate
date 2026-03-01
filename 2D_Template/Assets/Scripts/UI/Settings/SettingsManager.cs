@@ -171,9 +171,9 @@ public class SettingsManager : MonoBehaviour
     {
         if (setting is FloatSetting floatSetting)
         {
-            switch (floatSetting.Type)
+            switch (floatSetting.category)
             {
-                case Setting.SettingType.Audio:
+                case Setting.SettingCategory.Audio:
                     //Update all volumes with AudioManager
                     break;
             }

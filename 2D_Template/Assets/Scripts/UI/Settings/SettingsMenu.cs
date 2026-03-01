@@ -251,9 +251,7 @@ public class SettingsMenu : MonoBehaviour
     private void MoveHorizontalSelection(int direction)
     {
         if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
-        
-        //TODO create a method to check current setting visuals
-        
+
         Setting currentSetting = currentSortedSettings[currentIndex];
 
         switch (currentSetting)
@@ -265,19 +263,17 @@ public class SettingsMenu : MonoBehaviour
                 {
                     stepperVisuals.Initialize(stepper);
                 }
+
                 break;
 
             case BoolSetting toggle:
-                if (direction != 0)
-                {
-                    toggle.IsChecked = !toggle.IsChecked;
-                }
-
+                toggle.IsChecked = !toggle.IsChecked;
                 if (SettingsList.TryGetItemView(currentIndex, out ItemView toggleView) &&
                     toggleView.Visuals is ToggleSettingVisuals toggleVisuals)
                 {
                     toggleVisuals.isCheckedVisual = toggle.IsChecked;
                 }
+
                 break;
         }
 
@@ -287,11 +283,9 @@ public class SettingsMenu : MonoBehaviour
     private void MoveVerticalSelection(int direction)
     {
         int newIndex = Mathf.Clamp(currentIndex + direction, 0, currentSortedSettings.Count - 1);
-
         if (newIndex == currentIndex) return;
 
         currentIndex = newIndex;
-
         HighlightCurrentSetting();
         SettingsList.JumpToIndex(currentIndex);
 
