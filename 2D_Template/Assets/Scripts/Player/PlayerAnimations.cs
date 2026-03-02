@@ -1,12 +1,13 @@
 using System;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class PlayerAnimations : MonoBehaviour
 {
     private const string IS_WALKING = "isWalking";
     private const string IS_JUMPING = "isJumping";
     private const string ATTACK1 = "Attack1";
-    [SerializeField] private PlayerMovement playerMovement;
+    [SerializeField] private PlayerManager playerManager;
     [SerializeField] private PlayerCombat  playerCombat;
     
     private Animator animator;
@@ -21,10 +22,10 @@ public class PlayerAnimations : MonoBehaviour
 
     private void Update()
     {
-        animator.SetBool(IS_WALKING, playerMovement.IsWalking());
-        animator.SetBool(IS_JUMPING, playerMovement.IsJumping());
+        animator.SetBool(IS_WALKING, playerManager.IsWalking());
+        animator.SetBool(IS_JUMPING, playerManager.IsJumping());
         
-        float dir = playerMovement.GetFacingDir();
+        float dir = playerManager.GetFacingDir();
         if (dir != 0)
         {
             spriteRenderer.flipX = dir < 0;

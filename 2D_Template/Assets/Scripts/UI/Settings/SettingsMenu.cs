@@ -4,9 +4,6 @@ using Nova;
 using NovaSamples.UIControls;
 using System.Collections.Generic;
 using DG.Tweening;
-using NUnit.Framework;
-using Unity.VisualScripting;
-using UnityEngine.Events;
 
 [System.Serializable]
 public class SettingsMenu : MonoBehaviour
@@ -96,6 +93,23 @@ public class SettingsMenu : MonoBehaviour
             HandleHorizontalNavigation();
             HandleTabNavigation();
         }
+    }
+    
+    private ItemVisuals GetSettingVisuals(int index)
+    {
+        if (!SettingsList.TryGetItemView(index, out ItemView itemView))
+        {
+            return null;
+        }
+        
+        switch (itemView.Visuals)
+        {
+            case StepperSettingVisuals stepper:
+                return stepper;
+            case ToggleSettingVisuals toggle:
+                return toggle;
+        }
+        return null;
     }
 
     #region Popups
@@ -253,27 +267,20 @@ public class SettingsMenu : MonoBehaviour
         if (currentSortedSettings == null || currentSortedSettings.Count == 0) return;
 
         Setting currentSetting = currentSortedSettings[currentIndex];
+        ItemVisuals visuals = GetSettingVisuals(currentIndex);
 
         switch (currentSetting)
         {
             case StepperSetting stepper:
                 stepper.MoveSelection(direction);
-                if (SettingsList.TryGetItemView(currentIndex, out ItemView stepperView) &&
-                    stepperView.Visuals is StepperSettingVisuals stepperVisuals)
-                {
-                    stepperVisuals.Initialize(stepper);
-                }
-
+                StepperSettingVisuals stepperVisuals = visuals as StepperSettingVisuals;
+                stepperVisuals.Initialize(stepper);
                 break;
 
             case BoolSetting toggle:
                 toggle.IsChecked = !toggle.IsChecked;
-                if (SettingsList.TryGetItemView(currentIndex, out ItemView toggleView) &&
-                    toggleView.Visuals is ToggleSettingVisuals toggleVisuals)
-                {
-                    toggleVisuals.isCheckedVisual = toggle.IsChecked;
-                }
-
+                ToggleSettingVisuals toggleVisuals = visuals as ToggleSettingVisuals;
+                toggleVisuals.isCheckedVisual =  toggle.IsChecked;
                 break;
         }
 
@@ -296,25 +303,21 @@ public class SettingsMenu : MonoBehaviour
     {
         for (int i = 0; i < currentSortedSettings.Count; i++)
         {
-            if (!SettingsList.TryGetItemView(i, out ItemView itemView))
-                continue;
-
-            ApplyHighlight(itemView.Visuals, i == currentIndex);
-        }
-    }
-
-    private void ApplyHighlight(ItemVisuals visuals, bool selected)
-    {
-        switch (visuals)
-        {
-            case StepperSettingVisuals stepper:
-                stepper.isSelected = selected;
-                AnimateHighlight(stepper.Background, selected);
-                break;
-            case ToggleSettingVisuals toggle:
-                toggle.isSelected = selected;
-                AnimateHighlight(toggle.Background, selected);
-                break;
+            if (GetSettingVisuals(i) == null) continue;
+            ItemVisuals visuals = GetSettingVisuals(i);
+            bool selected = i == currentIndex;
+            
+            switch (visuals)
+            {
+                case StepperSettingVisuals stepper:
+                    stepper.isSelected = selected;
+                    AnimateHighlight(stepper.Background, selected);
+                    break;
+                case ToggleSettingVisuals toggle:
+                    toggle.isSelected = selected;
+                    AnimateHighlight(toggle.Background, selected);
+                    break;
+            }
         }
     }
 

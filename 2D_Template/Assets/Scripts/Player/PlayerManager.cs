@@ -1,7 +1,6 @@
-using System;
 using UnityEngine;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerManager : MonoBehaviour
 {
     [Header("Movement Settings")]
     [Space(10)]
@@ -14,25 +13,26 @@ public class PlayerMovement : MonoBehaviour
     [Header("Connections")]
     [SerializeField] private GameInput gameInput;
     
+    private Rigidbody2D rb;
+    private Vector2 moveInput;
     private bool isWalking;
     private bool isGrounded;
     private bool isJumping => !isGrounded;
     private float lastMoveX;
     
-    private Rigidbody2D rb;
-    private Vector2 moveInput;
     private void OnMove(Vector2 dir) => moveInput = dir;
-
+    public bool IsWalking() => isWalking;
+    public bool IsJumping() => isJumping;
+    public float GetFacingDir() => lastMoveX;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();      
-
         gameInput.Move += OnMove;
-        
         gameInput.EnableActions();
     }
 
+    
     void FixedUpdate()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, 0.2f, groundLayer);
@@ -53,13 +53,10 @@ public class PlayerMovement : MonoBehaviour
             lastMoveX = -inputVector.x;
         }
     }
-
-    public bool IsWalking() => isWalking;
-    public bool IsJumping() => isJumping;
-    public float GetFacingDir() => lastMoveX;
     
     private void OnDestroy()
     {
         gameInput.Move -= OnMove;
     }
 }
+
