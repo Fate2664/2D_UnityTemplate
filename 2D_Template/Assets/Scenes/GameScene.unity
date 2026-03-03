@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e85ae75e475f364dae239bc5c4ebb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
-  playerMovement: {fileID: 0}
+  playerMovement: {fileID: 2039730474}
   playerCombat: {fileID: 2039730473}
 --- !u!1 &1344798284
 GameObject:

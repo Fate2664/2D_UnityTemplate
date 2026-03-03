@@ -94,14 +94,14 @@ public class SettingsMenu : MonoBehaviour
             HandleTabNavigation();
         }
     }
-    
+
     private ItemVisuals GetSettingVisuals(int index)
     {
         if (!SettingsList.TryGetItemView(index, out ItemView itemView))
         {
             return null;
         }
-        
+
         switch (itemView.Visuals)
         {
             case StepperSettingVisuals stepper:
@@ -109,6 +109,7 @@ public class SettingsMenu : MonoBehaviour
             case ToggleSettingVisuals toggle:
                 return toggle;
         }
+
         return null;
     }
 
@@ -275,12 +276,14 @@ public class SettingsMenu : MonoBehaviour
                 stepper.MoveSelection(direction);
                 StepperSettingVisuals stepperVisuals = visuals as StepperSettingVisuals;
                 stepperVisuals.Initialize(stepper);
+                CheckUnsavedChanges(stepper.HasUnsavedChanges, stepperVisuals.SettingLabel);
                 break;
 
             case BoolSetting toggle:
                 toggle.IsChecked = !toggle.IsChecked;
                 ToggleSettingVisuals toggleVisuals = visuals as ToggleSettingVisuals;
-                toggleVisuals.isCheckedVisual =  toggle.IsChecked;
+                toggleVisuals.isCheckedVisual = toggle.IsChecked;
+                CheckUnsavedChanges(toggle.HasUnsavedChanges, toggleVisuals.SettingLabel);
                 break;
         }
 
@@ -306,7 +309,7 @@ public class SettingsMenu : MonoBehaviour
             if (GetSettingVisuals(i) == null) continue;
             ItemVisuals visuals = GetSettingVisuals(i);
             bool selected = i == currentIndex;
-            
+
             switch (visuals)
             {
                 case StepperSettingVisuals stepper:
@@ -362,19 +365,33 @@ public class SettingsMenu : MonoBehaviour
 
     private void HandleToggleClick(Gesture.OnClick evt, ToggleSettingVisuals target, int index)
     {
-        BoolSetting setting = currentSortedSettings[index] as BoolSetting;
-        setting.IsChecked = !setting.IsChecked;
-        target.isCheckedVisual = setting.IsChecked;
+        BoolSetting toggle = currentSortedSettings[index] as BoolSetting;
+        toggle.IsChecked = !toggle.IsChecked;
+        target.isCheckedVisual = toggle.IsChecked;
+        CheckUnsavedChanges(toggle.HasUnsavedChanges, target.SettingLabel);
     }
 
     private void HandleStepperClick(Gesture.OnClick evt, StepperSettingVisuals target, int index)
     {
-        var data = currentSortedSettings[index] as StepperSetting;
+        StepperSetting stepper = currentSortedSettings[index] as StepperSetting;
+        CheckUnsavedChanges(stepper.HasUnsavedChanges, target.SettingLabel);
     }
 
     private void HandleTabClicked(Gesture.OnClick evt, TabButtonVisuals target, int index)
     {
         SelectTab(target, index);
+    }
+
+    private void CheckUnsavedChanges(bool hasUnsavedChanges, TextBlock settingLabel)
+    {
+        if (hasUnsavedChanges && settingLabel.Text[settingLabel.Text.Length - 1] != '*')
+        {
+            settingLabel.Text += '*';
+        }
+        else if (!hasUnsavedChanges && settingLabel.Text[settingLabel.Text.Length - 1] == '*')
+        {
+            settingLabel.Text = settingLabel.Text.Remove(settingLabel.Text.Length - 1);
+        }
     }
 
     #endregion

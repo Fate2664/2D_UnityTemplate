@@ -19,6 +19,7 @@ public abstract class Setting
         Accessibility
     }
     public virtual void ResetToDefault() {}
+    public virtual bool HasUnsavedChanges => false;
 }
 
 [System.Serializable]
@@ -41,6 +42,7 @@ public class BoolSetting : Setting
     
     public void Save() => PlayerPrefs.SetInt(Key, IsChecked ? 1 : 0);
     public void Load() => IsChecked = PlayerPrefs.GetInt(Key, DefaultState ? 1 : 0) == 1;
+    public override bool HasUnsavedChanges => IsChecked != (PlayerPrefs.GetInt(Key, isChecked ? 1 : 0) == 1);
 
     public override void ResetToDefault()
     {
@@ -104,7 +106,7 @@ public class MultiOptionSetting : Setting
     }
     
     public string CurrentSelection => SelectedIndex >= 0 && SelectedIndex < Options.Length ? Options[SelectedIndex] : NothingSelected;
-    public bool HasUnsavedChanges => SelectedIndex != PlayerPrefs.GetInt(Key, SelectedIndex);
+    public override bool HasUnsavedChanges => SelectedIndex != PlayerPrefs.GetInt(Key, SelectedIndex);
     public void Save() => PlayerPrefs.SetInt(Key, SelectedIndex);
     public void Load() => SelectedIndex = PlayerPrefs.GetInt(Key, DefaultIndex);
 

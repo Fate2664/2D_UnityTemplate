@@ -76,28 +76,8 @@ public class StepperSettingVisuals : ItemVisuals
     private void UpdateValue()
     {
         ValueLabel.Text = DataSource.Options[DataSource.SelectedIndex];
-        
-        CheckLabel();
     }
 
-    private void CheckLabel()
-    {
-        if (DataSource.HasUnsavedChanges)
-        {
-            if (SettingLabel.Text[SettingLabel.Text.Length - 1] != '*')
-            {
-                SettingLabel.Text += "*";
-            }
-        }
-        else 
-        if (!DataSource.HasUnsavedChanges)
-        {
-            if (SettingLabel.Text[SettingLabel.Text.Length - 1] == '*')
-            {
-                SettingLabel.Text = SettingLabel.Text.Remove(SettingLabel.Text.Length - 1);
-            }
-        } 
-    }
 
     private void HandleLeftArrowClicked(Gesture.OnClick evt)
     {
@@ -108,6 +88,6 @@ public class StepperSettingVisuals : ItemVisuals
     {
         DataSource.MoveSelection(1);
     }
-
+    
     #endregion
 }

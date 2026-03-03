@@ -60,4 +60,5 @@ public class ToggleSettingVisuals : ItemVisuals
         
         //Play SFX
     }
+
 }
