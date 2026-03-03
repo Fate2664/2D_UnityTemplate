@@ -11,7 +11,7 @@ public class IndicatorManager : MonoBehaviour
     void Start()
     {
         indicator.transform.localScale = Vector3.zero;
-        indicator.transform.DOLocalMoveY(1.05f, 1.0f).SetLoops(-1,  LoopType.Yoyo).From(-1.05f).SetEase(Ease.InOutQuad);
+        indicator.transform.DOLocalMoveY(1.2f, 1.0f).SetLoops(-1,  LoopType.Yoyo).From(0.9f).SetEase(Ease.InOutQuad);
     }
 
     public void ShowIndictor()

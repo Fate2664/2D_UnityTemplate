@@ -200,10 +200,10 @@ MonoBehaviour:
   layout:
     Size:
       X:
-        Raw: 1
+        Raw: 0.7
         Type: 0
       Y:
-        Raw: 1
+        Raw: 0.7
         Type: 0
       Z:
         Raw: 0
@@ -428,7 +428,7 @@ MonoBehaviour:
       Mode: 1
     SoftenEdges: 1
     FillEnabled: 1
-  texture: {fileID: 2800000, guid: 26908fb6182a4f64e9f59a90dda197da, type: 3}
+  texture: {fileID: 2800000, guid: b23773df29a2c0546868466d1353a76d, type: 3}
   sprite: {fileID: 0}
 --- !u!114 &318763841
 MonoBehaviour:
@@ -805,7 +805,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e85ae75e475f364dae239bc5c4ebb20, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerAnimations
-  playerManager: {fileID: 2039730474}
+  playerMovement: {fileID: 0}
   playerCombat: {fileID: 2039730473}
 --- !u!1 &1344798284
 GameObject:
@@ -1290,7 +1290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38d0bb10cac2224408e46f8c274385b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerInteractionDetector
-  gameInput: {fileID: 0}
+  gameInput: {fileID: 11400000, guid: b2590a553b58f07438df7b76baea99eb, type: 2}
 --- !u!1 &2083306208
 GameObject:
   m_ObjectHideFlags: 0
@@ -1301,7 +1301,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2083306210}
   m_Layer: 0
-  m_Name: InputManager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

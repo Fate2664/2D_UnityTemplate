@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement Settings")]
     [Space(10)]

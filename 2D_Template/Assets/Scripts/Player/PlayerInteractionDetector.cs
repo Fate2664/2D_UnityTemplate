@@ -5,41 +5,44 @@ using UnityEngine.Events;
 
 public class PlayerInteractionDetector : MonoBehaviour
 {
-   [SerializeField] private GameInput gameInput;
-   private PlayerManager player;
+   [SerializeField] private GameInput gameInput; 
+   private PlayerMovement player;
    private IInteractable currentTarget;
    
    private void Awake()
    {
-      player = player.GetComponent<PlayerManager>();
+      player = GetComponent<PlayerMovement>();
       gameInput.Interact += OnInteract;
       gameInput.EnableActions();
    }
 
 
-   private void OnTriggerEnter2D(Collider other)
+   private void OnTriggerEnter2D(Collider2D other)
    {
-      if (currentTarget == null) return;
-      if (!other.TryGetComponent(out MonoBehaviour mb)) return;
-      if (mb is not IInteractable interactable) return;
+      if (!other.TryGetComponent(out Interactable interactable)) return;
+      IndicatorManager indicator = other.GetComponentInChildren<IndicatorManager>();
+      if (indicator == null) return;
       
       currentTarget = interactable;
-      //Show indicator
+      indicator.ShowIndictor();
    }
 
-   private void OnTriggerExit2D(Collider other)
+   private void OnTriggerExit2D(Collider2D other)
    {
-      if (currentTarget == null) return;
-      if (!other.TryGetComponent(out MonoBehaviour mb)) return;
-      if (mb is not IInteractable interactable) return;
-      
+      IndicatorManager indicator = other.GetComponentInChildren<IndicatorManager>();
       currentTarget = null;
-      //Hide indicator
+      indicator.HideIndictor();
    }
 
    private void OnInteract(bool pressed)
    {
-      currentTarget.Interact(player);
+      if (pressed)
+      {
+         if (currentTarget != null)
+         {
+            currentTarget.Interact(player);
+         }
+      }
    }
    
    private void OnDisable()

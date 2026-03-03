@@ -10,7 +10,7 @@ public class Interactable : MonoBehaviour, IInteractable
 
     private bool hasInteracted;
 
-    public void Interact(PlayerManager interactor)
+    public void Interact(PlayerMovement interactor)
     {
         hasInteracted  = true;
         Debug.Log("Interacted");
