@@ -14,7 +14,7 @@ public class StepperSettingVisuals : ItemVisuals
     public Texture2D WhiteArrow = null;
     public Texture2D BlackArrow = null;
     public static float HoverScale = 1.05f;
-    
+
     public bool isSelected
     {
         get => Background.BodyEnabled;
@@ -29,20 +29,41 @@ public class StepperSettingVisuals : ItemVisuals
     }
 
     private StepperSetting DataSource;
+    private bool EventHandlersRegistered = false;
+    private int boundIndex = -1;
 
-    public void Initialize(StepperSetting dataSource)
+    public void Initialize(StepperSetting dataSource, int index)
     {
-        this.DataSource = dataSource;
+        if (DataSource != null)
+        {
+            DataSource.OnIndexChanged -= HandleIndexChanged;
+        }
 
-        UpdateValue();
+        DataSource = dataSource;
+        boundIndex = index;
+        
+        if (DataSource != null)
+        {
+            DataSource.OnIndexChanged += HandleIndexChanged;
+        }
 
         //When OnIndexChanged also call this code -> UpdateValue()
         //We don't care about the paramenter
-        dataSource.OnIndexChanged += _ => UpdateValue();
+        //ataSource.OnIndexChanged += _ => UpdateValue();
 
-        //State Changing
-        LeftArrow.AddGestureHandler<Gesture.OnClick>(HandleLeftArrowClicked);
-        RightArrow.AddGestureHandler<Gesture.OnClick>(HandleRightArrowClicked);
+        if (!EventHandlersRegistered)
+        {
+            LeftArrow.AddGestureHandler<Gesture.OnClick>(HandleLeftArrowClicked);
+            RightArrow.AddGestureHandler<Gesture.OnClick>(HandleRightArrowClicked);
+            EventHandlersRegistered = true;
+        }
+        
+        UpdateValue();
+    }
+
+    private void HandleIndexChanged(Setting setting)
+    {
+        UpdateValue();
     }
 
     #region HandleData
@@ -77,17 +98,18 @@ public class StepperSettingVisuals : ItemVisuals
     {
         ValueLabel.Text = DataSource.Options[DataSource.SelectedIndex];
     }
-
-
+    
     private void HandleLeftArrowClicked(Gesture.OnClick evt)
     {
-        DataSource.MoveSelection(-1);
+        SettingsMenu.Instance.ApplySettingInput(boundIndex, -1);
     }
 
     private void HandleRightArrowClicked(Gesture.OnClick evt)
     {
-        DataSource.MoveSelection(1);
+        SettingsMenu.Instance.ApplySettingInput(boundIndex, 1);
     }
-    
+
     #endregion
+
+    
 }
