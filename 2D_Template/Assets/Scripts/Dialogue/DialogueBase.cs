@@ -7,5 +7,5 @@ public class DialogueBase : ScriptableObject
 {
     public string DialogueName;
     [TextArea(3,10)]
-    public string DialogueText;
+    public string[] DialogueText;
 }

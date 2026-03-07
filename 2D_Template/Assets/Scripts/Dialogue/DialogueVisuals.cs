@@ -4,7 +4,7 @@ using Nova;
 using UnityEngine;
 
 [Serializable]
-public class DialogueVisuals : ItemVisuals
+public class DialogueVisuals
 {
     public UIBlock2D Background;
     public TextBlock DialogueText;

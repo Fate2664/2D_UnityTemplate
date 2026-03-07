@@ -29,6 +29,7 @@ public class PlayerInteractionDetector : MonoBehaviour
 
    private void OnTriggerExit2D(Collider2D other)
    {
+      if (!other.TryGetComponent(out Interactable interactable)) return;
       IndicatorManager indicator = other.GetComponentInChildren<IndicatorManager>();
       currentTarget = null;
       indicator.HideIndictor();
