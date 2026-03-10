@@ -1,13 +1,24 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class DialogueManager : MonoBehaviour
 {
     [SerializeField] private DialogueVisuals dialogueVisuals;
-    
-    private Queue sentences = new ();
+
+    private QueueBase<string> sentences = new();
     private bool hasStartedDialogue = false;
-    public bool HasStartedDialogue { get => hasStartedDialogue; set => hasStartedDialogue = value; }
+
+    public bool HasStartedDialogue
+    {
+        get => hasStartedDialogue;
+        set => hasStartedDialogue = value;
+    }
+
+    private void Start()
+    {
+        dialogueVisuals.InitializeGestureHandlers();
+    }
 
     public void StartDialogue(DialogueBase dialogue)
     {
@@ -15,13 +26,14 @@ public class DialogueManager : MonoBehaviour
         dialogueVisuals.NameText.Text = dialogue.DialogueName;
         dialogueVisuals.Show();
         sentences.Clear();
+        dialogueVisuals.OnRightArrowPressed += DisplayNextDialogueText;
+
         foreach (string textBlock in dialogue.DialogueText)
         {
             sentences.Enqueue(textBlock);
         }
 
         DisplayNextDialogueText();
-
     }
 
     private void DisplayNextDialogueText()
@@ -31,6 +43,7 @@ public class DialogueManager : MonoBehaviour
             EndDialogue();
             return;
         }
+
         string textToDisplay = (string)sentences.Dequeue();
         dialogueVisuals.DialogueText.Text = textToDisplay;
         StopAllCoroutines();
@@ -47,7 +60,7 @@ public class DialogueManager : MonoBehaviour
         }
 
         yield return new WaitForSeconds(3f);
-        
+
         DisplayNextDialogueText();
     }
 
@@ -55,5 +68,6 @@ public class DialogueManager : MonoBehaviour
     {
         hasStartedDialogue = false;
         dialogueVisuals.Hide();
+        dialogueVisuals.OnRightArrowPressed -= DisplayNextDialogueText;
     }
 }
