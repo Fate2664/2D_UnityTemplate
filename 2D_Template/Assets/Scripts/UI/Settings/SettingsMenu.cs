@@ -57,10 +57,12 @@ public class SettingsMenu : MonoBehaviour
 
         //State Changing
         SettingsList.AddGestureHandler<Gesture.OnClick, ToggleSettingVisuals>(HandleToggleClick);
+        SettingsList.AddGestureHandler<Gesture.OnDrag, SliderSettingVisuals>(HandleSliderDragged);
 
         //Data Binding
         SettingsList.AddDataBinder<StepperSetting, StepperSettingVisuals>(BindStepperSetting);
         SettingsList.AddDataBinder<BoolSetting, ToggleSettingVisuals>(BindToggleSetting);
+        SettingsList.AddDataBinder<FloatSetting, SliderSettingVisuals>(BindSliderSetting);
 
         //Tabs
         TabBar.AddDataBinder<SettingsCollection, TabButtonVisuals>(BindTab);
@@ -353,6 +355,20 @@ public class SettingsMenu : MonoBehaviour
         SelectTab(target, index);
     }
 
+    private void HandleSliderDragged(Gesture.OnDrag evt, SliderSettingVisuals target, int index)
+    {
+        FloatSetting setting = currentSortedSettings[index] as FloatSetting;
+        Vector3 localPointerPos = target.Background.transform.InverseTransformPoint(evt.PointerPositions.Current);
+        float sliderWidth = target.Background.CalculatedSize.X.Value;
+        float distanceFromLeft = Mathf.Clamp(localPointerPos.x + sliderWidth * .5f, 0f, sliderWidth);
+        float percentFromLeft = distanceFromLeft / sliderWidth;
+        
+        setting.Value = Mathf.Lerp(setting.Min, setting.Max, percentFromLeft);
+        
+        target.FillBar.Size.X.Percent = percentFromLeft;
+        target.ValueLabel.Text = setting.DisplayValue;
+    }
+
     private void CheckUnsavedChanges(bool hasUnsavedChanges, TextBlock settingLabel)
     {
         if (hasUnsavedChanges && settingLabel.Text[settingLabel.Text.Length - 1] != '*')
@@ -399,14 +415,33 @@ public class SettingsMenu : MonoBehaviour
 
     private void BindToggleSetting(Data.OnBind<BoolSetting> evt, ToggleSettingVisuals target, int index)
     {
+        BoolSetting setting = evt.UserData;
         target.SettingLabel.Text = evt.UserData.Name;
         target.isCheckedVisual = evt.UserData.IsChecked;
+        
+        setting.OnStateChanged -= SettingsManager.Instance.UpdateSetting;
+        setting.OnStateChanged += SettingsManager.Instance.UpdateSetting;
     }
 
     private void BindStepperSetting(Data.OnBind<StepperSetting> evt, StepperSettingVisuals target, int index)
     {
+        StepperSetting setting = evt.UserData;
         target.SettingLabel.Text = evt.UserData.Name;
         target.Initialize(evt.UserData, index);
+        
+        setting.OnIndexChanged -= SettingsManager.Instance.UpdateSetting;
+        setting.OnIndexChanged += SettingsManager.Instance.UpdateSetting;
+    }
+
+    private void BindSliderSetting(Data.OnBind<FloatSetting> evt, SliderSettingVisuals visuals, int index)
+    {
+        FloatSetting setting = evt.UserData;
+        visuals.SettingLabel.Text = setting.Name;
+        visuals.ValueLabel.Text = setting.DisplayValue;
+        visuals.FillBar.Size.X.Percent = (setting.value = setting.Min) / (setting.Max - setting.Min);
+
+        setting.OnValueChanged -= SettingsManager.Instance.UpdateSetting;
+        setting.OnValueChanged += SettingsManager.Instance.UpdateSetting;
     }
 
     #endregion
