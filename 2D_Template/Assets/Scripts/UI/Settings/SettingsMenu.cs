@@ -358,9 +358,9 @@ public class SettingsMenu : MonoBehaviour
     private void HandleSliderDragged(Gesture.OnDrag evt, SliderSettingVisuals target, int index)
     {
         FloatSetting setting = currentSortedSettings[index] as FloatSetting;
-        Vector3 localPointerPos = target.Background.transform.InverseTransformPoint(evt.PointerPositions.Current);
-        float sliderWidth = target.Background.CalculatedSize.X.Value;
-        float distanceFromLeft = Mathf.Clamp(localPointerPos.x + sliderWidth * .5f, 0f, sliderWidth);
+        Vector3 localPointerPos = target.SliderBackground.transform.InverseTransformPoint(evt.PointerPositions.Current);
+        float sliderWidth = target.SliderBackground.CalculatedSize.X.Value;
+        float distanceFromLeft = Mathf.Clamp(localPointerPos.x + sliderWidth * .5f, target.MinValue, sliderWidth);
         float percentFromLeft = distanceFromLeft / sliderWidth;
         
         setting.Value = Mathf.Lerp(setting.Min, setting.Max, percentFromLeft);
@@ -438,7 +438,6 @@ public class SettingsMenu : MonoBehaviour
         FloatSetting setting = evt.UserData;
         visuals.SettingLabel.Text = setting.Name;
         visuals.ValueLabel.Text = setting.DisplayValue;
-        visuals.FillBar.Size.X.Percent = (setting.value = setting.Min) / (setting.Max - setting.Min);
 
         setting.OnValueChanged -= SettingsManager.Instance.UpdateSetting;
         setting.OnValueChanged += SettingsManager.Instance.UpdateSetting;
