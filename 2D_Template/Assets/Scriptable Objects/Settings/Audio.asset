@@ -15,18 +15,31 @@ MonoBehaviour:
   Category: Audio
   Settings:
   - rid: 5843491056734699597
+  - rid: 4513147973581930567
   references:
     version: 2
     RefIds:
+    - rid: 4513147973581930567
+      type: {class: FloatSetting, ns: , asm: Assembly-CSharp}
+      data:
+        Key: MusicVolume
+        Name: Music Volume
+        Order: 1
+        value: 62.59058
+        Min: 0
+        Max: 100
+        ValueFormat: '{0:0}'
+        DefaultValue: 50
+        category: 0
     - rid: 5843491056734699597
       type: {class: FloatSetting, ns: , asm: Assembly-CSharp}
       data:
         Key: MasterVolume
-        Name: MasterVolume
+        Name: Master Volume
         Order: 0
-        value: 7.496252
+        value: 23.493769
         Min: 0
         Max: 100
-        ValueFormat: '{0:0.0}'
+        ValueFormat: '{0:0}'
         DefaultValue: 50
         category: 0

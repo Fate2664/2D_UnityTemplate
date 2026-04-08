@@ -54,6 +54,8 @@ public class SettingsMenu : MonoBehaviour
         Root.AddGestureHandler<Gesture.OnHover, ToggleSettingVisuals>(ToggleSettingVisuals.HandleHover);
         Root.AddGestureHandler<Gesture.OnUnhover, ToggleSettingVisuals>(ToggleSettingVisuals.HandleUnHover);
         Root.AddGestureHandler<Gesture.OnPress, ToggleSettingVisuals>(ToggleSettingVisuals.HandlePress);
+        Root.AddGestureHandler<Gesture.OnHover, SliderSettingVisuals>(SliderSettingVisuals.HandleHover);
+        Root.AddGestureHandler<Gesture.OnUnhover, SliderSettingVisuals>(SliderSettingVisuals.HandleUnHover);
 
         //State Changing
         SettingsList.AddGestureHandler<Gesture.OnClick, ToggleSettingVisuals>(HandleToggleClick);
@@ -302,6 +304,10 @@ public class SettingsMenu : MonoBehaviour
                     toggle.isSelected = selected;
                     AnimateHighlight(toggle.Background, selected);
                     break;
+                case SliderSettingVisuals slider:
+                    slider.isSelected = selected;
+                    AnimateHighlight(slider.MainBackground, selected);
+                    break;
             }
         }
     }
@@ -360,12 +366,15 @@ public class SettingsMenu : MonoBehaviour
         FloatSetting setting = currentSortedSettings[index] as FloatSetting;
         Vector3 localPointerPos = target.SliderBackground.transform.InverseTransformPoint(evt.PointerPositions.Current);
         float sliderWidth = target.SliderBackground.CalculatedSize.X.Value;
-        float distanceFromLeft = Mathf.Clamp(localPointerPos.x + sliderWidth * .5f, target.MinValue, sliderWidth);
-        float percentFromLeft = distanceFromLeft / sliderWidth;
+
+        float startX = target.MinVisualOffset;
+        float endX = sliderWidth;
+        float currentX = Mathf.Clamp(localPointerPos.x + sliderWidth  * .5f, startX, endX);
+        float normalized = Mathf.InverseLerp(startX, endX, currentX);
+        float visualPercent = Mathf.Lerp(startX / sliderWidth, 1f , normalized);
         
-        setting.Value = Mathf.Lerp(setting.Min, setting.Max, percentFromLeft);
-        
-        target.FillBar.Size.X.Percent = percentFromLeft;
+        setting.Value = Mathf.Lerp(setting.Min, setting.Max, normalized);
+        target.FillBar.Size.X.Percent = visualPercent;
         target.ValueLabel.Text = setting.DisplayValue;
     }
 
@@ -438,6 +447,9 @@ public class SettingsMenu : MonoBehaviour
         FloatSetting setting = evt.UserData;
         visuals.SettingLabel.Text = setting.Name;
         visuals.ValueLabel.Text = setting.DisplayValue;
+        
+        float normalized = Mathf.InverseLerp(setting.Min, setting.Max, setting.Value);
+        visuals.FillBar.Size.X.Percent = normalized;
 
         setting.OnValueChanged -= SettingsManager.Instance.UpdateSetting;
         setting.OnValueChanged += SettingsManager.Instance.UpdateSetting;
