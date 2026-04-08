@@ -111,6 +111,8 @@ public class SettingsMenu : MonoBehaviour
                 return stepper;
             case ToggleSettingVisuals toggle:
                 return toggle;
+            case SliderSettingVisuals slider:
+                return slider;
         }
 
         return null;
@@ -408,6 +410,17 @@ public class SettingsMenu : MonoBehaviour
                 {
                     toggleVisuals.isCheckedVisual = toggle.IsChecked;
                     CheckUnsavedChanges(toggle.HasUnsavedChanges, toggleVisuals.SettingLabel);
+                }
+                break;
+            case FloatSetting slider:
+                slider.InputMove(direction);
+                if (visuals is SliderSettingVisuals sliderVisuals)
+                {
+                    sliderVisuals.ValueLabel.Text = slider.DisplayValue;
+                    //float normalized = Mathf.InverseLerp(sliderVisuals.MinVisualOffset, sliderVisuals.SliderBackground.CalculatedSize.X.Value, )
+                    //float visualPercent = Mathf.Lerp(sliderVisuals.MinVisualOffset / sliderVisuals.SliderBackground.CalculatedSize.X.Value, 1f , normalized);
+                    //sliderVisuals.FillBar.Size.X.Percent = visualPercent;
+                    CheckUnsavedChanges(slider.HasUnsavedChanges, sliderVisuals.SettingLabel);
                 }
                 break;
         }

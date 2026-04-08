@@ -1,5 +1,6 @@
 using System;
 using Nova;
+using NovaSamples.UIControls;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -82,6 +83,21 @@ public class FloatSetting : Setting
     {
         value = DefaultValue;
         Save();
+    }
+
+    public void InputMove(int direction)
+    {
+        if (direction == 0 || SettingsMenu.Instance.popup.IsOpen) return;
+
+        switch (direction)
+        {
+            case -1:
+                Value = Value >= 10f ? Value - 10f : 0f;
+                break;
+            case 1:
+                Value = Value <= 90f ? Value + 10f : 100f;
+                break;
+        }
     }
 }
 
